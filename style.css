@@ -109,7 +109,7 @@ body {
 }
 
 .toprated__desc {
-	width: 190px;
+	width: 170px;
 	font-size: 10px;
 	color: #fff;
 }
@@ -144,7 +144,7 @@ body {
 
 .prodcut__list {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 	gap: 1.5em;
 }
 
@@ -223,4 +223,30 @@ h6 {
     color: #fff;
     text-align: center;
     margin-top: 20px;
+}
+
+@media (max-width: 800px) {
+	.toprated__item:first-child {
+		display: none;
+	}	
+
+	.toprated__item img {
+		width: 130px;
+	}
+	.toprated-wrap {
+		text-align: center;
+
+	}
+	.toprated__link {
+		font-size: 10px;
+	}
+	.toprated__desc {
+		width: 130px;
+	}
+	.container {
+		max-width: 740px;
+	}
+	.hero {
+		padding-block: 0;
+	}
 }
