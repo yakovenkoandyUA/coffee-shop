@@ -1,12 +1,15 @@
-fetch('https://api.monobank.ua/personal/auth/request', {
-	method: 'POST',
-	body: JSON.stringify({
-		tokenRequestId: 'uDJOZ7Eg00wSuWnCPKMK2qhuGS8e9JWxdkyqz51p_e4o',
-		acceptUrl: 'https://mbnk.app/auth/uDJOZ7Eg00wSuWnCPKMK2qhuGS8e9JWxdkyqz51p_e4o',
-	}),
-    headers: {
-        "X-Time": new Date().getTime()
-    }
-})
-	.then(res => res.json())
-	.then(data => console.log(data))
+const modal = document.querySelector('.modal')
+const modalWrapper = document.querySelector('.modal-wrapper')
+const close = document.querySelector('.close')
+const btnWonna = document.querySelector('.btn__wonna')
+const submit = document.querySelector('.modal-form-submit')
+
+const handleModal = e => {
+   console.log(e);
+        modal.classList.toggle('active')
+}
+
+btnWonna.addEventListener('click', handleModal)
+close.addEventListener('click', handleModal)
+submit.addEventListener('click', handleModal)
+
