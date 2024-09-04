@@ -4,7 +4,6 @@ const btnWonna = document.querySelector('.btn__wonna')
 const submit = document.querySelector('.modal-form-submit')
 
 const handleModal = e => {
-	console.log(e)
 	modal.classList.toggle('active')
 }
 
@@ -16,7 +15,6 @@ const buyGoods = e => {
 	const basketNum = document.querySelector('.basket_num')
 	if (e.target.classList.contains('prodcut__list-link')) {
 		const img = e.target.parentElement.parentElement.children[0].src
-		console.log(basketNum)
 		basketNum.textContent = +basketNum.textContent + 1
 		const storageItem = {
 			id: basketNum.textContent,
@@ -58,7 +56,7 @@ const handleModal1 = e => {
 		)
 	})
 }
-
+console.log('object');
 close1.addEventListener('click', handleModal1)
 submit.addEventListener('click', handleModal1)
 basket.addEventListener('click', handleModal1)
