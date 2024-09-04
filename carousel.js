@@ -39,12 +39,14 @@ const swiper1 = new Swiper('.swiper1', {
 	spaceBetween: 10,
 	// Responsive breakpoints
 	breakpoints: {
-	
 		480: {
 			slidesPerView: 2,
 			spaceBetween: 30,
 		},
-	
+		800: {
+			slidesPerView: 3,
+			spaceBetween: 40,
+		},
 	},
 })
 const swiper2 = new Swiper('.swiper2', {
@@ -61,12 +63,14 @@ const swiper2 = new Swiper('.swiper2', {
 	spaceBetween: 10,
 	// Responsive breakpoints
 	breakpoints: {
-	
 		480: {
 			slidesPerView: 2,
 			spaceBetween: 30,
 		},
-	
+		800: {
+			slidesPerView: 3,
+			spaceBetween: 40,
+		},
 	},
 })
 const swiper3 = new Swiper('.swiper3', {
@@ -83,11 +87,13 @@ const swiper3 = new Swiper('.swiper3', {
 	spaceBetween: 10,
 	// Responsive breakpoints
 	breakpoints: {
-	
 		480: {
 			slidesPerView: 2,
 			spaceBetween: 30,
 		},
-	
+		800: {
+			slidesPerView: 3,
+			spaceBetween: 40,
+		},
 	},
 })
