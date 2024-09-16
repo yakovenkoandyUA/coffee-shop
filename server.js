@@ -20,7 +20,7 @@ app.use(json())
 app.use(urlencoded({ extended: false }))
 app.use(cors())
 // Serve static files
-app.use(express.static('./client/**/**'))
+app.use(express.static('./client/'))
 
 export const sendEmail = async (req, res) => {
 	const { title, products, description, user, toAddress } = req.body
