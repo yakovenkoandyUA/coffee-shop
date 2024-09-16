@@ -97,7 +97,7 @@ body {
 .list__link {
 	text-decoration: none;
 	color: #000;
-	font-size: 1.2rem;
+	font-size: 14px;
 	letter-spacing: 0.5px;
 }
 
@@ -210,16 +210,16 @@ body {
 .section__title,
 .gooods__title {
 	font-size: 46px;
+	line-height: 1.3;
 	color: #fff;
 	text-align: center;
 	margin-bottom: 20px;
 	text-transform: uppercase;
-	/* margin-top: 600px; */
-	/* font-weight: semibold; */
 }
 
 .section__subtitle {
 	font-size: 20px;
+	line-height: 1.3;
 	color: #fff;
 	text-align: center;
 	margin-top: 100px;
@@ -310,6 +310,22 @@ body {
 	/* margin-block: 100px; */
 	background-color: #60463b;
 	padding: 20px;
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	    justify-content: space-between;
+}
+
+@media (max-width: 700px) {
+	.buy {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+}
+
+.buy img {
+	width: 200px;
 }
 
 .form {
@@ -382,23 +398,26 @@ h6 {
 	right: -60px;
 	bottom: -60px;
 	display: block;
-	transition: visibility 0.5s;
+	transition: 0.5s;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
 	.phonering-alo-phone {
-		right: 10px;
-		bottom: 10px;
+		right: -80px;
+		bottom: -80px;
 	}
 }
 .phonering-alo-phone.phonering-alo-show {
+	transition: 0.5s;
 	visibility: visible;
 }
 .phonering-alo-phone.phonering-alo-static {
+	transition: 0.5s;
 	opacity: 0.6;
 }
 .phonering-alo-phone.phonering-alo-hover,
 .phonering-alo-phone:hover {
+	transition: 0.5s;
 	opacity: 1;
 }
 
@@ -449,6 +468,12 @@ h6 {
 	-ms-transform-origin: 50% 50%;
 	transform-origin: 50% 50%;
 }
+@media (max-width: 500px) {
+	.phonering-alo-ph-circle-fill {
+		display: none;
+	}
+}
+
 .phonering-alo-phone.phonering-alo-active .phonering-alo-ph-circle-fill {
 	-webkit-animation: phonering-alo-circle-fill-anim 1.7s infinite ease-in-out !important;
 	animation: phonering-alo-circle-fill-anim 1.7s infinite ease-in-out !important;
@@ -495,7 +520,12 @@ h6 {
 	-ms-transform-origin: 50% 50%;
 	transform-origin: 50% 50%;
 }
-
+@media (max-width: 500px) {
+	.phonering-alo-ph-img-circle {
+		width: 45px;
+		height: 45px;
+	}
+}
 .phonering-alo-ph-img-circle img {
 	width: 100%;
 }
@@ -687,7 +717,11 @@ h6 {
 	border-radius: 20px;
 	position: relative;
 }
-
+.modal-basket-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
 .modal-form {
 	display: flex;
 	flex-direction: column;
@@ -849,8 +883,9 @@ h6 {
 }
 
 .modal-basket-goods {
-	margin-bottom: 30px;
+	margin-bottom: 30px;text-align: center;
 	border: 1px solid #2e2e2e;
+	padding: 10px;
 }
 
 .head_title {

@@ -31,9 +31,9 @@
 				<h1 class="head_title">Japan&Co.</h1>
 			</a>
 			<ul class="list">
-				<li class="list__item"><a href="кава" class="list__link">кава</a></li>
-				<li class="list__item"><a href="замовити" class="list__link">замовити</a></li>
-				<li class="list__item"><a href="контакти" class="list__link">контакти</a></li>
+				<li class="list__item"><a href="#goods" class="list__link">товари</a></li>
+				<li class="list__item"><a href="#goods" class="list__link">замовити</a></li>
+				<!-- <li class="list__item"><a href="контакти" class="list__link">контакти</a></li> -->
 			</ul>
 			<picture class="basket_wrap">
 				<img class="basket" src="./img/basket.png" alt="" />
@@ -284,7 +284,7 @@
 				<h2 class="hero__title">Сакури</h2>
 				<h2 class="hero__subtitle">Ранок</h2>
 
-				<button class="btn__wonna">Хочу</button>
+				<a href="#goods" class="btn__wonna">Хочу</a>
 			</section>
 
 			<section class="product">
@@ -293,7 +293,7 @@
 					<h3 class="section__subtitle">Найкращі товари Японії вже чекають на тебе</h3>
 				</div>
 			</section>
-			<section class="goods">
+			<section class="goods" id="goods">
 				<div class="container">
 					<h2 class="gooods__title">Кава</h2>
 					<div class="swiper">
@@ -549,10 +549,14 @@
 				</div>
 			</section>
 			<section id="buy" class="buy">
-				<form class="form">
+				<img src="./img/logo/logo1.png" alt="">
+				<img src="./img/logo/dl.png" alt="">
+				<img src="./img/meest.png" alt="">
+				<!-- <img src="./img/logo/logo4.jpg" alt=""> -->
+				<!-- <form class="form">
 					<input class="buy__field" type="text" required placeholder="Контактні данні" />
 					<input class="buy__btn" type="submit" value="замовити" />
-				</form>
+				</form> -->
 			</section>
 		</main>
 		<footer>
@@ -564,12 +568,12 @@
 				<!-- <div class="phonering-alo-ph-circle"></div> -->
 				<div class="phonering-alo-ph-circle-fill"></div>
 				<div class="phonering-alo-ph-img-circle">
-					<a class="pps-btn-img" title="Hotline liên hệ" href="@Zxc_1000rank"> <img src="./img/chat.png" alt="Liên hệ" width="50" class="img-responsive" /> </a>
+					<a class="pps-btn-img" title="Hotline liên hệ" href="https://t.me/Zxc_1000rank" target="_blank"> <img src="./img/chat.png" alt="Liên hệ" width="50" class="img-responsive" /> </a>
 				</div>
 			</div>
 		</div>
 
-		<div class="modal">
+		<!-- <div class="modal">
 			<div class="modal-wrapper">
 				<h2 class="section__subtitle black">Напиши нам, що ти хочеш</h2>
 				<form class="modal-form">
@@ -581,15 +585,16 @@
 				</form>
 				<img src="./img/close.png" class="close" alt="" />
 			</div>
-		</div>
+		</div> -->
 		<div class="modal-basket">
 			<div class="modal-basket-wrapper">
 				<h2 class="section__subtitle black">Замовлення</h2>
-				<div class="modal-basket-goods"></div>
+				<div class="modal-basket-goods">Товар не вибраний</div>
 				<form class="modal-form">
 					<input class="modal-form-field" type="text" placeholder="Iмʼя" />
 					<input class="modal-form-field" type="text" placeholder="Прізвище" />
 					<input class="modal-form-field" type="number" placeholder="Контактий номер телефону" />
+					<input class="modal-form-field" type="text" placeholder="Номер відділення НП" />
 					<textarea class="modal-form-textarea" placeholder="Опиши, деталі замовлення"></textarea>
 					<input class="modal-form-submit" type="submit" value="замовити" />
 				</form>
