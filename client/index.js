@@ -1,7 +1,7 @@
 // const modal = document.querySelector('.modal')
 // const close = document.querySelector('.close')
 // const btnWonna = document.querySelector('.btn__wonna')
-// const submit = document.querySelector('.modal-form-submit')
+const submit = document.querySelector('.modal-form-submit')
 
 // const handleModal = e => {
 // 	modal.classList.toggle('active')
@@ -61,7 +61,8 @@ close1.addEventListener('click', handleModal1)
 submit.addEventListener('click', handleModal1)
 basket.addEventListener('click', handleModal1)
 
-btnWonna.addEventListener('click', () => {
+submit.addEventListener('click', (e) => {
+	e.preventDefault()
 	// const url = 'http://localhost:8080/api'
 	fetch('/api/mail', {
 		method: 'POST',

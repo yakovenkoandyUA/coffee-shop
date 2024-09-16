@@ -88,7 +88,7 @@ body {
 	align-items: center;
 	list-style: none;
 }
-@media (max-width: 800px) {
+@media (max-width: 700px) {
 	.list {
 		display: none;
 	}
