@@ -5,8 +5,8 @@
 	"type": "module",
 	"main": "server.js",
 	"scripts": {
-		"dev": "nodemon ./server.js",
-		"start": "npm i & nodemon ./server.js",
+		"start": "node ./server.js",
+		"start:dev": "nodemon ./server.js",
 		"heroku": "heroku local web --port 5001"
 	},
 	"keywords": [],
