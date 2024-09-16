@@ -55,6 +55,6 @@ app.get('*', (req, res) => {
 // app.use('/', homeRoutes)
 app.use('/api/mail', mailRoutes)
 
-app.listen(process.env.SERVER_PORT, () => {
+app.listen(process.env.PORT || 8080, () => {
 	console.log(`Server is running on port: ${process.env.SERVER_PORT}`)
 })
