@@ -313,7 +313,7 @@ body {
 	display: flex;
 	align-items: center;
 	gap: 1em;
-	    justify-content: space-between;
+	justify-content: space-around;
 }
 
 @media (max-width: 700px) {
@@ -860,7 +860,7 @@ h6 {
 .modal-basket-goods-item {
 	display: flex;
 	justify-content: space-between;
-	border: 1px solid;
+	/* border: 1px solid; */
 	padding: 1em;
 }
 
@@ -883,7 +883,8 @@ h6 {
 }
 
 .modal-basket-goods {
-	margin-bottom: 30px;text-align: center;
+	margin-bottom: 30px;
+	text-align: center;
 	border: 1px solid #2e2e2e;
 	padding: 10px;
 }

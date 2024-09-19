@@ -21,6 +21,10 @@ const buyGoods = e => {
 			imgSrc: img,
 		}
 		const storage = JSON.parse(localStorage.getItem('user'))
+
+		const t = storage.map(i =>{ 
+			
+		})
 		const newStorage = [...storage, storageItem]
 		localStorage.setItem('user', JSON.stringify(newStorage))
 	}
@@ -48,9 +52,9 @@ const handleModal1 = e => {
                 <div class="modal-basket-goods-item">
                         <img src="${singleGood.imgSrc}" alt="">
                         <div class="count">
-                                <button class="count__btn">-</button>
+                               
                                 <p>0</p>
-                                <button class="count__btn">+</button>
+                               
                         </div>
                 </div>`,
 		)
@@ -61,17 +65,23 @@ close1.addEventListener('click', handleModal1)
 submit.addEventListener('click', handleModal1)
 basket.addEventListener('click', handleModal1)
 
-submit.addEventListener('click', (e) => {
+submit.addEventListener('click', sendMail)
+
+async function sendMail(e) {
 	e.preventDefault()
-	// const url = 'http://localhost:8080/api'
-	fetch('/api/mail', {
-		method: 'POST',
-		body: JSON.stringify({
-			toAddress: 'gogi@gmail.com',
-		}),
+	const fields = document.querySelectorAll('.modal-form-field')
+	const data = {}
+	fields.forEach(({ name, value }) => {
+		data[name] = value
 	})
-		.then(res => res.text())
-		.then(data => {
-			console.log(data)
-		})
-})
+	const url = 'http://localhost:8080'
+	console.log(JSON.stringify(data))
+	const res = await fetch('/api/mail', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
+	const result = await res.text()
+}
