@@ -104,7 +104,7 @@ async function sendMail(e) {
 async function createSlides(params) {
 	const coffeeDiv = document.querySelector('#coffee .swiper-wrapper')
 	if(!coffeeDiv) return 
-	const data = await fetch('../data.json')
+	const data = await fetch('./data.json')
 	const { coffee } = await data.json()
 
 	coffee.forEach(({imgSrc, title, description}) => {
@@ -120,9 +120,7 @@ async function createSlides(params) {
 					${description}
 				</h3>
 				<div class="wrapper__price">
-					<p class="price" >
-						товар в дорозі
-					</p>
+					
 					<button class="prodcut__list-link">
 						хочу
 					</button>

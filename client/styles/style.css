@@ -65,7 +65,7 @@ body {
 	right: 0;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
 	.bottom-rock {
 		display: none;
 		/* width: 670px; */
@@ -280,11 +280,11 @@ body {
 	display: none;
 }
 .wrapper__price {
-	display: flex;
+	/* display: flex;
 	align-items: center;
-	flex-direction: column;
+	flex-direction: column; */
 	padding: 1em 1em 2em;
-	gap: 1.5em;
+	/* gap: 1.5em; */
 }
 
 .price {
