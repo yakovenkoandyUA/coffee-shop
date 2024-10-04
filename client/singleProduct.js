@@ -5,12 +5,14 @@ const single = document.querySelector('.single')
 
 single.insertAdjacentHTML(
 	'afterbegin',
-	`
-                <img class="single__img" src="${items.imgSrc}" alt="img">
+	`			<div>
+	
+	<img class="single__img" src="${items.imgSrc}" alt="img">
+	<button class="prodcut__list-link">хочу</button>
+	</div>
 				<div class="single__info">
 					<h2 class="single__title">${items.title}</h2>
 					<p class="single__descr">${items.descr}</p>
-					<button class="prodcut__list-link">хочу</button>
 				</div>`,
 )
 

@@ -276,7 +276,9 @@ body {
 	font-weight: 400;
 	text-align: center;
 }
-
+.prodcut__list-title1 {
+	display: none;
+}
 .wrapper__price {
 	display: flex;
 	align-items: center;

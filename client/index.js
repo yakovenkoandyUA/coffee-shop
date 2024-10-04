@@ -16,26 +16,29 @@ const buyGoods = e => {
 	if (e.target.classList.contains('prodcut__list-link')) {
 		const img = e.target.parentElement.parentElement.children[0].src
 		const title = e.target.parentElement.parentElement.children[1].textContent
+		const descr = e.target.parentElement.parentElement.children[2].textContent
+	
 		basketNum.textContent = +basketNum.textContent + 1
 		// console.log(e.target.parentElement.parentElement.children)
 		const storageItem = {
 			id: basketNum.textContent,
 			imgSrc: img,
 			title,
+			descr,
 		}
 		window.open('./singleProduct.html', '_self')
 		localStorage.setItem('user', JSON.stringify(storageItem))
 		// newWindow.document.location.href = './singleProduct.html'
-		
-		// const t = storage.map(i =>{ 
-			
-			// })
-			// const storage = JSON.parse(localStorage.getItem('user'))
+
+		// const t = storage.map(i =>{
+
+		// })
+		// const storage = JSON.parse(localStorage.getItem('user'))
 		// if(!storage) {
-			// debugger
+		// debugger
 		// } else {
-			// const newStorage = [...storage, storageItem]
-			// localStorage.setItem('user', JSON.stringify(newStorage))
+		// const newStorage = [...storage, storageItem]
+		// localStorage.setItem('user', JSON.stringify(newStorage))
 		// }
 	}
 }
@@ -96,3 +99,38 @@ async function sendMail(e) {
 	})
 	const result = await res.text()
 }
+
+
+async function createSlides(params) {
+	const coffeeDiv = document.querySelector('#coffee .swiper-wrapper')
+	if(!coffeeDiv) return 
+	const data = await fetch('../data.json')
+	const { coffee } = await data.json()
+
+	coffee.forEach(({imgSrc, title, description}) => {
+		coffeeDiv.insertAdjacentHTML(
+			'beforeend',
+			`
+			<div class="prodcut__list-item swiper-slide">
+				<img class="prodcut__list-img" src="${imgSrc}" alt="" />
+				<h3 class="prodcut__list-title" data-descr='${description}'>
+					${title}
+				</h3>
+				<h3 class="prodcut__list-title1" >
+					${description}
+				</h3>
+				<div class="wrapper__price">
+					<p class="price" >
+						товар в дорозі
+					</p>
+					<button class="prodcut__list-link">
+						хочу
+					</button>
+				</div>
+			</div>`,
+		)
+	})
+
+}
+
+createSlides()
