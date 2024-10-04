@@ -118,6 +118,10 @@ main {
 	text-align: center;
 }
 
+.hero__icons {
+	overflow: hidden;
+}
+
 .hero__title {
 	text-transform: uppercase;
 	font-size: 100px;
