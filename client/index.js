@@ -7,9 +7,9 @@ const handleModal = e => {
 	modal.classList.toggle('active')
 }
 
-btnWonna.addEventListener('click', handleModal)
-close.addEventListener('click', handleModal)
-submit.addEventListener('click', handleModal)
+btnWonna?.addEventListener('click', handleModal)
+close?.addEventListener('click', handleModal)
+submit?.addEventListener('click', handleModal)
 
 const buyGoods = e => {
 	const basketNum = document.querySelector('.basket_num')
@@ -75,11 +75,11 @@ const handleModal1 = e => {
 	})
 }
 // console.log('object')
-close1.addEventListener('click', handleModal1)
-submit.addEventListener('click', handleModal1)
-basket.addEventListener('click', handleModal1)
+close1?.addEventListener('click', handleModal1)
+submit?.addEventListener('click', handleModal1)
+basket?.addEventListener('click', handleModal1)
 
-submit.addEventListener('click', sendMail)
+submit?.addEventListener('click', sendMail)
 
 async function sendMail(e) {
 	e.preventDefault()
@@ -103,12 +103,34 @@ async function sendMail(e) {
 
 async function createSlides(params) {
 	const coffeeDiv = document.querySelector('#coffee .swiper-wrapper')
-	if(!coffeeDiv) return 
+	const gigienaDiv = document.querySelector('#gigiena .swiper-wrapper')
+	if (!coffeeDiv || !gigienaDiv) return 
 	const data = await fetch('./data.json')
-	const { coffee } = await data.json()
+	const { coffee, gigiena } = await data.json()
 
 	coffee.forEach(({imgSrc, title, description, price}) => {
 		coffeeDiv.insertAdjacentHTML(
+			'beforeend',
+			`
+			<div class="prodcut__list-item swiper-slide">
+				<img class="prodcut__list-img" src="${imgSrc}" alt="" />
+				<h3 class="prodcut__list-title" data-descr='${description}'>
+					${title}
+				</h3>
+				<h3 class="prodcut__list-title1" >
+					${description}
+				</h3>
+				<div class="wrapper__price">
+					<p class="wrapper__price-text">${price}</p>
+					<button class="prodcut__list-link">
+						хочу
+					</button>
+				</div>
+			</div>`,
+		)
+	})
+	gigiena.forEach(({imgSrc, title, description, price}) => {
+		gigienaDiv.insertAdjacentHTML(
 			'beforeend',
 			`
 			<div class="prodcut__list-item swiper-slide">
