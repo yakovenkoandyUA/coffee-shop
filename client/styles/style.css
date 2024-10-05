@@ -117,7 +117,11 @@ main {
 	/* padding-block: 50px; */
 	text-align: center;
 }
-
+.wrapper__price-text,.price {
+	text-align: center;
+	margin-bottom: 24px;
+	color: #fff;
+}
 .hero__icons {
 	overflow: hidden;
 }

@@ -1,15 +1,15 @@
-// const modal = document.querySelector('.modal')
-// const close = document.querySelector('.close')
-// const btnWonna = document.querySelector('.btn__wonna')
+const modal = document.querySelector('.modal')
+const close = document.querySelector('.close')
+const btnWonna = document.querySelector('.btn__wonna')
 const submit = document.querySelector('.modal-form-submit')
 
-// const handleModal = e => {
-// 	modal.classList.toggle('active')
-// }
+const handleModal = e => {
+	modal.classList.toggle('active')
+}
 
-// btnWonna.addEventListener('click', handleModal)
-// close.addEventListener('click', handleModal)
-// submit.addEventListener('click', handleModal)
+btnWonna.addEventListener('click', handleModal)
+close.addEventListener('click', handleModal)
+submit.addEventListener('click', handleModal)
 
 const buyGoods = e => {
 	const basketNum = document.querySelector('.basket_num')
@@ -107,7 +107,7 @@ async function createSlides(params) {
 	const data = await fetch('./data.json')
 	const { coffee } = await data.json()
 
-	coffee.forEach(({imgSrc, title, description}) => {
+	coffee.forEach(({imgSrc, title, description, price}) => {
 		coffeeDiv.insertAdjacentHTML(
 			'beforeend',
 			`
@@ -120,7 +120,7 @@ async function createSlides(params) {
 					${description}
 				</h3>
 				<div class="wrapper__price">
-					
+					<p class="wrapper__price-text">${price}</p>
 					<button class="prodcut__list-link">
 						хочу
 					</button>
