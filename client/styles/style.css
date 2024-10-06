@@ -401,7 +401,7 @@ h6 {
 }
 
 /* HOTLINE */
-.phonering-alo-phone {
+/* .phonering-alo-phone {
 	position: fixed;
 	visibility: hidden;
 	background-color: transparent;
@@ -526,7 +526,7 @@ h6 {
 	left: 70px;
 	position: absolute;
 	/* background: url(./img/chat.png) no-repeat center center; */
-	border-radius: 100%;
+	/* border-radius: 100%;
 	border: 2px solid transparent;
 	-webkit-animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
 	animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
@@ -652,7 +652,7 @@ h6 {
 		-webkit-transform: rotate(0) scale(1) skew(1deg);
 		transform: rotate(0) scale(1) skew(1deg);
 	}
-}
+} */ 
 
 .goods {
 	padding-block: 50px;
