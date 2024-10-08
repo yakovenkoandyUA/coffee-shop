@@ -88,8 +88,8 @@ async function sendMail(e) {
 	fields.forEach(({ name, value }) => {
 		data[name] = value
 	})
-	const url = 'http://localhost:8080'
-	console.log(JSON.stringify(data))
+	// const url = 'http://localhost:8080'
+	// console.log(JSON.stringify(data))
 	const res = await fetch('/api/mail', {
 		method: 'POST',
 		headers: {
@@ -98,6 +98,7 @@ async function sendMail(e) {
 		body: JSON.stringify(data),
 	})
 	const result = await res.text()
+	window.open('./index.html', '_self')
 }
 
 
