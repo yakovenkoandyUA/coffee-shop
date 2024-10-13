@@ -1,15 +1,21 @@
 const modal = document.querySelector('.modal')
 const close = document.querySelector('.close')
 const btnWonna = document.querySelector('.btn__wonna')
-const submit = document.querySelector('.modal-form-submit')
+const submit = document.querySelector('.modal-form-wonna-submit')
+const submit1 = document.querySelector('.modal-form-submit')
 
 const handleModal = e => {
-	modal.classList.toggle('active')
+	if(e?.target === e?.currentTarget) {
+		modal.classList.toggle('active')
+	}
 }
 
 btnWonna?.addEventListener('click', handleModal)
 close?.addEventListener('click', handleModal)
 submit?.addEventListener('click', handleModal)
+submit?.addEventListener('submit', e => {
+	e.preventDefault()
+})
 
 const buyGoods = e => {
 	const basketNum = document.querySelector('.basket_num')
@@ -43,6 +49,21 @@ const buyGoods = e => {
 	}
 }
 
+
+const popup = document.querySelector('.popup')
+const btnPopup = document.querySelector('.popup button')
+function popupHandler(e = true) {
+	if (e?.target === popup || e?.target === btnPopup || e) {
+		popup.classList.toggle('active')
+		localStorage.setItem('basketUser', false)
+		console.log('object');
+	}
+}
+
+popup?.addEventListener('click', popupHandler)
+// btnPopup.addEventListener('click', popupHandler)
+
+
 const goods = document.querySelectorAll('.goods')
 goods.forEach(item => {
 	item.addEventListener('click', buyGoods)
@@ -59,7 +80,7 @@ const handleModal1 = e => {
 	modalBasket.classList.toggle('active')
 	const storage = JSON.parse(localStorage.getItem('storage'))
 	const wrapper = document.querySelector('.modal-basket-goods')
-	storage.forEach(singleGood => {
+	storage?.forEach(singleGood => {
 		wrapper.insertAdjacentHTML(
 			'afterbegin',
 			`
@@ -76,10 +97,16 @@ const handleModal1 = e => {
 }
 // console.log('object')
 close1?.addEventListener('click', handleModal1)
-submit?.addEventListener('click', handleModal1)
+submit1?.addEventListener('click', handleModal1)
 basket?.addEventListener('click', handleModal1)
+modalBasket?.addEventListener('click', (e) => {
+	if(e.target === e.currentTarget) {
+		modalBasket.classList.toggle('active')
 
-submit?.addEventListener('click', sendMail)
+	}
+})
+
+submit1?.addEventListener('click', sendMail)
 
 async function sendMail(e) {
 	e.preventDefault()
@@ -98,10 +125,13 @@ async function sendMail(e) {
 		body: JSON.stringify(data),
 	})
 	const result = await res.text()
+	localStorage.setItem('basketUser', true)
 	window.open('./index.html', '_self')
 }
 
-
+if(JSON.parse(localStorage.getItem('basketUser'))) {
+	popupHandler()
+}
 async function createSlides(params) {
 	const coffeeDiv = document.querySelector('#coffee .swiper-wrapper')
 	const gigienaDiv = document.querySelector('#gigiena .swiper-wrapper')
@@ -177,3 +207,17 @@ async function createSlides(params) {
 }
 
 createSlides()
+
+
+
+
+
+const listCateg = document.querySelector('.category-list')
+const listCategItem = document.querySelectorAll('.category-list-item')
+
+
+listCategItem.forEach(item => {
+	item.addEventListener('click', ()=> {
+		handleModal()
+	})
+})

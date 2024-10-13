@@ -28,7 +28,7 @@ export const sendEmail = async (req, res) => {
 	const info = await transporter.sendMail({
 		to: mail, // list of receivers
 		subject: `Замовлення`, // Subject line
-		html: `Вітаю шановний ${name} ${lastName}`, // html body
+		html: `Вітаю шановний/на ${name} ${lastName}, ваше замовлення прийнято в роботу та буде відправлено на протязі декількох днів. Дякую. що обрали саме нас. Гарного дня!`, // html body
 	})
 
 	// console.log('Message sent: %s', info.messageId)
