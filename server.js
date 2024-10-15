@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
 	service: 'gmail',
 	auth: {
 		user: 'elitejapanimports@gmail.com',
-		pass: 'ryra cstk fpmg jfah',
+		pass: 'iast rpor bzee eglo',
 	},
 })
 
@@ -23,12 +23,24 @@ app.use(cors())
 app.use(express.static('./client/'))
 
 export const sendEmail = async (req, res) => {
-	const { name, lastName, desc, mail, toAddress } = req.body
+	const { name, lastName, desc, mail, toAddress,storage } = req.body
 	console.log(req.body);
 	const info = await transporter.sendMail({
 		to: mail, // list of receivers
 		subject: `Замовлення`, // Subject line
-		html: `Вітаю шановний/на ${name} ${lastName}, ваше замовлення прийнято в роботу та буде відправлено на протязі декількох днів. Дякую. що обрали саме нас. Гарного дня!`, // html body
+		html: `Вітаю шановний/на ${name} ${lastName}, ваше замовлення прийнято в роботу та буде відправлено на протязі декількох днів. Дякую. що обрали саме нас. Гарного дня!
+		`, // html body
+		
+	})
+	const str = ''
+	storage.forEach(i => {
+		str += `<p>${i.title}</p><span> ${id}</span>`
+	})
+	
+	const info1 = await transporter.sendMail({
+		to: 'elitejapanimports1@gmail.com', // list of receivers
+		subject: `Замовлення`, // Subject line
+		html: str, // html body
 	})
 
 	// console.log('Message sent: %s', info.messageId)
