@@ -130,19 +130,19 @@ async function sendMail(e) {
 		}
 	})
 	data.storage = JSON.parse(localStorage.getItem('storage'))
-	console.log(data);
+	// console.log(data);
 	// const url = 'http://localhost:8080'
 	// console.log(JSON.stringify(data))
-	// const res = await fetch('/api/mail', {
-	// 	method: 'POST',
-	// 	headers: {
-	// 		'Content-Type': 'application/json',
-	// 	},
-	// 	body: JSON.stringify(data),
-	// })
-	// const result = await res.text()
+	const res = await fetch('/api/mail', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
+	const result = await res.text()
 	localStorage.setItem('basketUser', true)
-	// window.open('./index.html', '_self')
+	window.open('./index.html', '_self')
 }
 
 if (JSON.parse(localStorage.getItem('basketUser'))) {
