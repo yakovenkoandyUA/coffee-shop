@@ -889,12 +889,18 @@ h6 {
 .modal-basket-goods-item {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	/* border: 1px solid; */
 	padding: 1em;
 }
 
 .modal-basket-goods-item img {
 	width: 100px;
+}
+
+.delete {
+	width: 20px!important;
+	cursor: pointer;
 }
 
 .count {

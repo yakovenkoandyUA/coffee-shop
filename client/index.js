@@ -89,8 +89,9 @@ const handleModal1 = e => {
 			<p>1</p>
 			
 			</div>
+			<img src="./img/close.png" class="delete" alt="" />
 			</div>`,
-			)
+		)
 		})
 	}
 	// console.log('object')
@@ -237,3 +238,11 @@ if (localStorage.getItem('storage')) {
 	const storage = JSON.parse(localStorage.getItem('storage'))
 	basketNum.textContent = storage.length
 }
+
+
+
+document.querySelector('.modal-basket-goods').addEventListener('click', (e) => {
+	e.target.parentElement.remove()
+
+	// console.log(e.target.parentElement)
+})
