@@ -1,4 +1,3 @@
-localStorage.clear()
 const modal = document.querySelector('.modal')
 const close = document.querySelector('.close')
 const btnWonna = document.querySelector('.btn__wonna')
