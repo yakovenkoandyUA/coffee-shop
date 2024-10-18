@@ -31,6 +31,7 @@ const buyGoods = e => {
 			imgSrc: img,
 			title,
 			descr,
+			qty: 1
 		}
 		window.open('./singleProduct.html', '_self')
 		localStorage.setItem('user', JSON.stringify(storageItem))
@@ -78,15 +79,18 @@ const handleModal1 = e => {
 	modalBasket.classList.toggle('active')
 	const storage = JSON.parse(localStorage.getItem('storage'))
 	const wrapper = document.querySelector('.modal-basket-goods')
+	const wrapperP = document.querySelector('.modal-basket-goods p')
+	// wrapper.innerHTML = ''
+	wrapperP?.remove()
 	storage?.forEach(singleGood => {
 		wrapper.insertAdjacentHTML(
 			'afterbegin',
 			`
-			<div class="modal-basket-goods-item">
+			<div data-id='${singleGood.id}' class="modal-basket-goods-item">
 			<img src="${singleGood.imgSrc}" alt="">
 			<div class="count">
 			
-			<p>1</p>
+			<p>${singleGood.qty}</p>
 			
 			</div>
 			<img src="./img/close.png" class="delete" alt="" />
@@ -242,7 +246,48 @@ if (localStorage.getItem('storage')) {
 
 
 document.querySelector('.modal-basket-goods').addEventListener('click', (e) => {
-	e.target.parentElement.remove()
-
+	// e.target.parentElement.remove()
+	const newStore = removeItem(e.target.parentElement.dataset.id)
+	localStorage.setItem('storage', JSON.stringify(newStore))
 	// console.log(e.target.parentElement)
+	const wrapper = document.querySelector('.modal-basket-goods')
+
+	wrapper.innerHTML = ''
+	newStore?.forEach(singleGood => {
+		wrapper.insertAdjacentHTML(
+			'afterbegin',
+			`
+			<div data-id='${singleGood.id}' class="modal-basket-goods-item">
+			<img src="${singleGood.imgSrc}" alt="">
+			<div class="count">
+			
+			<p>${singleGood.qty}</p>
+			
+			</div>
+			<img src="./img/close.png" class="delete" alt="" />
+			</div>`,
+		)
+	})
 })
+
+
+function removeItem(itemId) {
+	let storage = JSON.parse(localStorage.getItem('storage'))
+	// Find the index of the item with the given id
+	const itemIndex = storage.findIndex(item => item.id === itemId)
+	if (itemIndex !== -1) {
+		const item = storage[itemIndex]
+
+		// Decrement qty by 1
+		item.qty -= 1
+
+		// If qty becomes 0, remove the item from the array
+		if (item.qty === 0) {
+			storage.splice(itemIndex, 1)
+		}
+
+		// Display the updated array
+	return storage
+		
+	}
+}
