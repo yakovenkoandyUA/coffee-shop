@@ -146,6 +146,15 @@ async function sendMail(e) {
 		body: JSON.stringify(data),
 	})
 	const result = await res.text()
+	const res1 = await fetch('/api/mail/admin', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
+	const result1 = await res1.text()
+	console.log(result1,result);
 	localStorage.setItem('basketUser', true)
 	window.open('./index.html', '_self')
 }
