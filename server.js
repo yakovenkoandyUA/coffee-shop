@@ -133,7 +133,6 @@ async function addTasks(req, res) {
 
 
 const DB_URL = 'mongodb+srv://yakovenkoandyua:forest548@japan-co.lic0y.mongodb.net/?retryWrites=true&w=majority&appName=Japan-co'
-	// console.log('!!!!!!!!!!', process.env.MONGODB_URI, '!!!!!!!!!!!')
 mongoose
 	.connect(process.env.MONGODB_URI, {
 		useNewUrlParser: true,
@@ -152,5 +151,5 @@ app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, './client/index.html'))
 })
 app.listen(process.env.PORT || 8080, () => {
-	console.log(`Server is running on port: ${process.env.MONGODB_URI}`)
+	console.log(`Server is running on port: ${process.env.SERVER_PORT}`)
 })
