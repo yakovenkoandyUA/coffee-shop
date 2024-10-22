@@ -2,8 +2,8 @@ const items = JSON.parse(localStorage.getItem('user'))
 // console.log(items)
 
 const single = document.querySelector('.single')
-console.log(items.imgDetails.split(','))
-
+// console.log(items.imgDetails.split(','))
+console.log(items.imgDetails)
 let imgs = items.imgDetails.split(',')
 let res = [...imgs, items.imgSrc].reverse()
 console.log(res)
@@ -55,26 +55,32 @@ var swiper2 = new Swiper('.swiper11', {
 		swiper: swiper,
 	},
 })
-res.forEach((items, ind) => {
-	document.querySelector('.swiper10 .swiper-wrapper').insertAdjacentHTML(
-		'beforeend',
-		`
+if (items.imgDetails !== 'undefined') {
+	res.forEach((items, ind) => {
+		document.querySelector('.swiper10 .swiper-wrapper').insertAdjacentHTML(
+			'beforeend',
+			`
 						<div class="swiper-slide">
 						<img src='${items}' alt='${ind}'></div>
 
 		`,
-	)
-})
-res.forEach((items, ind) => {
-	document.querySelector('.swiper11 .swiper-wrapper').insertAdjacentHTML(
-		'beforeend',
-		`
+		)
+	})
+}
+// console.log(!!items.imgDetails);
+
+	console.log('object')
+	res.forEach((items, ind) => {
+		document.querySelector('.swiper11 .swiper-wrapper').insertAdjacentHTML(
+			'beforeend',
+			`
 						<div class="swiper-slide">
 						<img src='${items}' alt='${ind}'></div>
 
 		`,
-	)
-})
+		)
+	})
+
 
 const btn = document.querySelector('.prodcut__list-link')
 btn.addEventListener('click', buy)
