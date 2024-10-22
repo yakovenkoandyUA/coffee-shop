@@ -102,7 +102,7 @@ function buy() {
 		const res = reducedItems(storage, items)
 		localStorage.setItem('storage', JSON.stringify(res))
 	}
-	basketNum.textContent = storage.length
+	basketNum.textContent = JSON.parse(localStorage.getItem('storage')).length
 }
 
 function reducedItems(ar, newItem) {
