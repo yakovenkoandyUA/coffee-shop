@@ -2,12 +2,36 @@ const items = JSON.parse(localStorage.getItem('user'))
 // console.log(items)
 
 const single = document.querySelector('.single')
+console.log(items.imgDetails.split(','))
+
+let imgs = items.imgDetails.split(',')
+let res = [...imgs, items.imgSrc].reverse()
+console.log(res)
 
 single.insertAdjacentHTML(
 	'afterbegin',
 	`			<div>
+	<div>
+	<div class="swiper11 task-swiper">
+	<!-- Additional required wrapper -->
+	<div class="swiper-wrapper sing-imgs">
+	<!-- Slides -->
 	
-	<img class="single__img" src="${items.imgSrc}" alt="img">
+	
+	</div>
+	
+	</div>
+	<div class="swiper10 task-swiper">
+	<!-- Additional required wrapper -->
+	<div class="swiper-wrapper sing-imgs">
+	<!-- Slides -->
+	
+	
+	</div>
+	
+	</div>
+	
+	</div>
 	<button class="prodcut__list-link">хочу</button>
 	</div>
 				<div class="single__info">
@@ -15,6 +39,42 @@ single.insertAdjacentHTML(
 					<p class="single__descr">${items.descr}</p>
 				</div>`,
 )
+var swiper = new Swiper('.swiper10', {
+	spaceBetween: 10,
+	slidesPerView: 4,
+	freeMode: true,
+	watchSlidesProgress: true,
+})
+var swiper2 = new Swiper('.swiper11', {
+	spaceBetween: 10,
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev',
+	},
+	thumbs: {
+		swiper: swiper,
+	},
+})
+res.forEach((items, ind) => {
+	document.querySelector('.swiper10 .swiper-wrapper').insertAdjacentHTML(
+		'beforeend',
+		`
+						<div class="swiper-slide">
+						<img src='${items}' alt='${ind}'></div>
+
+		`,
+	)
+})
+res.forEach((items, ind) => {
+	document.querySelector('.swiper11 .swiper-wrapper').insertAdjacentHTML(
+		'beforeend',
+		`
+						<div class="swiper-slide">
+						<img src='${items}' alt='${ind}'></div>
+
+		`,
+	)
+})
 
 const btn = document.querySelector('.prodcut__list-link')
 btn.addEventListener('click', buy)
@@ -29,8 +89,8 @@ function buy() {
 	//     title,
 	// }
 	const basketNum = document.querySelector('.basket_num')
-	basketNum.textContent = +basketNum.textContent + 1
 	const storage = JSON.parse(localStorage.getItem('storage'))
+	basketNum.textContent = storage.length
 	if (!storage) {
 		localStorage.setItem('storage', JSON.stringify([items]))
 	} else {

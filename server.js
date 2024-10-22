@@ -3,6 +3,7 @@ import cors from 'cors'
 import * as dotenv from 'dotenv'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import mongoose from 'mongoose'
 
 import nodemailer from 'nodemailer'
 
@@ -72,17 +73,84 @@ const mailRoutes = express.Router()
 mailRoutes.post('/', sendEmail)
 mailRoutes.post('/admin', sendEmail1)
 
+const taskSchema = new mongoose.Schema({
+	lastName: String,
+	mail: String,
+	name: String,
+	phone: String,
+	storage: [{
+		id: String,
+		imgSrc: String,
+		title: String,
+		descr: String,
+		qty: Number,
+	}],
+	completed: Boolean,
+})
+
+// Create a model for Task based on the schema
+const Task = mongoose.model('Task', taskSchema)
+
+// Define a route to get all tasks
+const tasksRoutes = express.Router()
+tasksRoutes.get('/', getAllTasks)
+tasksRoutes.post('/', addTasks)
+async function getAllTasks(req, res) {
+	// res.send('hello')
+	try {
+		const tasksAll = await Task.find() // Fetch all tasks from the collection
+		res.send(tasksAll) // Send tasks as JSON response
+	} catch (err) {
+		res.status(400).send({ message: 'Error fetching tasks' })
+	}
+}
+// Route to add a new task (POST /tasks)
+async function addTasks(req, res) {
+	try {
+		const { lastName, mail, name, phone, storage, completed } = req.body // Extract data from request body
+		// Create a new task
+		const newTask = new Task({
+			lastName,
+			mail,
+			name,
+			phone,
+			storage,
+			completed,
+		})
+
+		// Save the task to the database
+		const savedTask = await newTask.save()
+
+		// Send the saved task as a response
+		res.status(200).send(savedTask)
+	} catch (err) {
+		res.status(500).send({ message: 'Error creating task', error: err })
+	}
+}
 // const homeRoutes = express.Router()
 // homeRoutes.get('/', getStart)
 //handling client routes
+
+
+const DB_URL = 'mongodb+srv://yakovenkoandyua:forest548@japan-co.lic0y.mongodb.net/?retryWrites=true&w=majority&appName=Japan-co'
+
+mongoose
+	.connect(DB_URL || '', {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
+	.then(() => console.log('MongoDb connected'))
+	.catch(err => console.error(err))
+
+// app.use('/', homeRoutes)
+app.use('/api/mail', mailRoutes)
+app.use('/api/tasks', tasksRoutes)
+
+
 app.get('*', (req, res) => {
 	const __dirname = path.resolve()
 	res.sendFile(path.join(__dirname, './client/index.html'))
 })
-
-// app.use('/', homeRoutes)
-app.use('/api/mail', mailRoutes)
-
 app.listen(process.env.PORT || 8080, () => {
 	console.log(`Server is running on port: ${process.env.SERVER_PORT}`)
 })

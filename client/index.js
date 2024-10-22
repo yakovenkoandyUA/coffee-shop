@@ -21,6 +21,7 @@ const buyGoods = e => {
 	const basketNum = document.querySelector('.basket_num')
 	if (e.target.classList.contains('prodcut__list-link')) {
 		const img = e.target.parentElement.parentElement.children[0].src
+		const imgDetails = e.target.parentElement.parentElement.children[0].dataset.details
 		const title = e.target.parentElement.parentElement.children[1].textContent
 		const descr = e.target.parentElement.parentElement.children[2].textContent
 
@@ -29,9 +30,10 @@ const buyGoods = e => {
 		const storageItem = {
 			id: basketNum.textContent,
 			imgSrc: img,
+			imgDetails,
 			title,
 			descr,
-			qty: 1
+			qty: 1,
 		}
 		window.open('./singleProduct.html', '_self')
 		localStorage.setItem('user', JSON.stringify(storageItem))
@@ -96,16 +98,16 @@ const handleModal1 = e => {
 			<img src="./img/close.png" class="delete" alt="" />
 			</div>`,
 		)
-		})
-	}
-	// console.log('object')
-	close1?.addEventListener('click', () => {
-		const wrapper = document.querySelector('.modal-basket-goods')
-		const c = [...wrapper.children]
-		c.forEach(i => i.remove())
-		modalBasket.classList.toggle('active')
 	})
-	submit1?.addEventListener('click', () => {
+}
+// console.log('object')
+close1?.addEventListener('click', () => {
+	const wrapper = document.querySelector('.modal-basket-goods')
+	const c = [...wrapper.children]
+	c.forEach(i => i.remove())
+	modalBasket.classList.toggle('active')
+})
+submit1?.addEventListener('click', () => {
 	// const wrapper = document.querySelector('.modal-basket-goods')
 	// const c = [...wrapper.children]
 	// c.forEach(i => i.remove())
@@ -113,7 +115,6 @@ const handleModal1 = e => {
 })
 basket?.addEventListener('click', handleModal1)
 modalBasket?.addEventListener('click', e => {
-	
 	if (e.target === e.currentTarget) {
 		const wrapper = document.querySelector('.modal-basket-goods')
 		modalBasket.classList.toggle('active')
@@ -135,9 +136,11 @@ async function sendMail(e) {
 		}
 	})
 	data.storage = JSON.parse(localStorage.getItem('storage'))
+	data.completed = false
 	// console.log(data);
 	// const url = 'http://localhost:8080'
 	// console.log(JSON.stringify(data))
+
 	const res = await fetch('/api/mail', {
 		method: 'POST',
 		headers: {
@@ -154,8 +157,19 @@ async function sendMail(e) {
 		body: JSON.stringify(data),
 	})
 	const result1 = await res1.text()
-	console.log(result1,result);
+
+	// console.log(result1,result);
 	localStorage.setItem('basketUser', true)
+	localStorage.setItem('storage', JSON.stringify([]))
+	const tasks = await fetch('/api/tasks', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
+	const resTasks = await tasks.json()
+	// console.log(resTasks)
 	window.open('./index.html', '_self')
 }
 
@@ -170,12 +184,12 @@ async function createSlides(params) {
 	const data = await fetch('./data.json')
 	const { coffee, gigiena, homeGoods } = await data.json()
 
-	coffee.forEach(({ imgSrc, title, description, price }) => {
+	coffee.forEach(({ imgSrc, title, description, price, imgDetails }) => {
 		coffeeDiv.insertAdjacentHTML(
 			'beforeend',
 			`
 			<div class="prodcut__list-item swiper-slide">
-				<img class="prodcut__list-img" src="${imgSrc}" alt="" />
+				<img class="prodcut__list-img" src="${imgSrc}" alt=""data-details="${imgDetails}" />
 				<h3 class="prodcut__list-title" data-descr='${description}'>
 					${title}
 				</h3>
@@ -191,7 +205,7 @@ async function createSlides(params) {
 			</div>`,
 		)
 	})
-	gigiena.forEach(({ imgSrc, title, description, price }) => {
+	gigiena.forEach(({ imgSrc, title, description, price, imgDetails }) => {
 		gigienaDiv.insertAdjacentHTML(
 			'beforeend',
 			`
@@ -212,12 +226,12 @@ async function createSlides(params) {
 			</div>`,
 		)
 	})
-	homeGoods.forEach(({ imgSrc, title, description, price }) => {
+	homeGoods.forEach(({ imgSrc, title, description, price, imgDetails }) => {
 		homeGoodsDiv.insertAdjacentHTML(
 			'beforeend',
 			`
 			<div class="prodcut__list-item swiper-slide">
-				<img class="prodcut__list-img" src="${imgSrc}" alt="" />
+				<img class="prodcut__list-img" src="${imgSrc}" alt=""  />
 				<h3 class="prodcut__list-title" data-descr='${description}'>
 					${title}
 				</h3>
@@ -252,9 +266,7 @@ if (localStorage.getItem('storage')) {
 	basketNum.textContent = storage.length
 }
 
-
-
-document.querySelector('.modal-basket-goods').addEventListener('click', (e) => {
+document.querySelector('.modal-basket-goods').addEventListener('click', e => {
 	// e.target.parentElement.remove()
 	const newStore = removeItem(e.target.parentElement.dataset.id)
 	localStorage.setItem('storage', JSON.stringify(newStore))
@@ -279,7 +291,6 @@ document.querySelector('.modal-basket-goods').addEventListener('click', (e) => {
 	})
 })
 
-
 function removeItem(itemId) {
 	let storage = JSON.parse(localStorage.getItem('storage'))
 	// Find the index of the item with the given id
@@ -296,7 +307,12 @@ function removeItem(itemId) {
 		}
 
 		// Display the updated array
-	return storage
-		
+		return storage
 	}
 }
+
+document.querySelector('#admin')?.addEventListener('keyup', e => {
+	if (e.target.value.toLowerCase() === 'яблоко') {
+		window.open('./tasks.html', '_self')
+	}
+})

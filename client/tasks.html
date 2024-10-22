@@ -31,30 +31,19 @@
 			<a href="./index.html">
 				<h1 class="head_title">Japan&Co.</h1>
 			</a>
-			<!-- <ul class="list">
-				<li class="list__item"><a href="#goods" class="list__link">товари</a></li>
-				<li class="list__item"><a href="#goods" class="list__link">замовити</a></li>
-				<li class="list__item"><a href="контакти" class="list__link">контакти</a></li>
-			</ul> -->
-			<picture class="basket_wrap">
-				<img class="basket" src="./img/basket.png" alt="" />
-				<span class="basket_num">0</span>
-			</picture>
 		</header>
 		<main>
-			<section class="single container">
-				
+			<section class="tasks container">
+				<div class="tasks-head">
+					<div class="tasks-head-num">№</div>
+					<div class="tasks-head-names">Замовник</div>
+					<div class="tasks-head-phone">Телефон</div>
+					<div class="tasks-head-good">Товар</div>
+					<div class="tasks-head-good">Виконано</div>
+				</div>
+				<div class="task-wrapper"></div>
 			</section>
 		</main>
-		<!-- <div class="hotline">
-			<div id="phonering-alo-phoneIcon" class="phonering-alo-phone phonering-alo-green phonering-alo-show">
-				<div class="phonering-alo-ph-circle"></div>
-				<div class="phonering-alo-ph-circle-fill"></div>
-				<div class="phonering-alo-ph-img-circle">
-					<a class="pps-btn-img" title="Hotline liên hệ" href="https://t.me/Zxc_1000rank" target="_blank"> <img src="./img/chat.png" alt="Liên hệ" width="50" class="img-responsive" /> </a>
-				</div>
-			</div>
-		</div> -->
 
 		<!-- <div class="modal">
 			<div class="modal-wrapper">
@@ -69,27 +58,12 @@
 				<img src="./img/close.png" class="close" alt="" />
 			</div>
 		</div> -->
-		<div class="modal-basket">
-			<div class="modal-basket-wrapper">
-				<h2 class="section__subtitle black">Замовлення</h2>
-				<div class="modal-basket-goods"><p>Товар не вибраний</p></div>
-				<form class="modal-form">
-					<input class="modal-form-field" name="name" type="text" placeholder="Iмʼя" />
-					<input class="modal-form-field" name="lastName" type="text" placeholder="Прізвище" />
-					<input class="modal-form-field" name="mail" type="email" required placeholder="exmaple@email.com" />
-					<input class="modal-form-field" name="phone" type="number" placeholder="Контактий номер телефону" />
-					<input class="modal-form-field" name="toAddress" type="text" placeholder="Номер відділення НП" />
-					<textarea class="modal-form-textarea" name="desc" placeholder="Опиши, деталі замовлення"></textarea>
-					<input class="modal-form-submit" type="submit" value="замовити" />
-				</form>
-				<img src="./img/close.png" class="close1" alt="" />
-			</div>
-		</div>
 
 		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+		<script src="./tasks.js"></script>
 		<!-- <script src="./index.js"></script> -->
 		<!-- <script src="./carousel.js"></script> -->
 		<!-- <script src="./parallax.js"></script> -->
-		<script src="./singleProduct.js"></script>
+		<!-- <script src="./singleProduct.js"></script> -->
 	</body>
 </html>
