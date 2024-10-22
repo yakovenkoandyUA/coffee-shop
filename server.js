@@ -135,7 +135,7 @@ async function addTasks(req, res) {
 const DB_URL = 'mongodb+srv://yakovenkoandyua:forest548@japan-co.lic0y.mongodb.net/?retryWrites=true&w=majority&appName=Japan-co'
 
 mongoose
-	.connect(process.env.MONGODB_URI || DB_URL, {
+	.connect(process.env.MONGODB_URI, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
