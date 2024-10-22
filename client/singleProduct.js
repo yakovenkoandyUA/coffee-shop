@@ -95,13 +95,13 @@ function buy() {
 	//     title,
 	// }
 	const basketNum = document.querySelector('.basket_num')
+	const storage = JSON.parse(localStorage.getItem('storage'))
 	if (!storage) {
 		localStorage.setItem('storage', JSON.stringify([items]))
 	} else {
 		const res = reducedItems(storage, items)
 		localStorage.setItem('storage', JSON.stringify(res))
 	}
-	const storage = JSON.parse(localStorage.getItem('storage'))
 	basketNum.textContent = storage.length
 }
 
