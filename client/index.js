@@ -28,7 +28,7 @@ const buyGoods = e => {
 		basketNum.textContent = +basketNum.textContent + 1
 		// console.log(e.target.parentElement.parentElement.children)
 		const storageItem = {
-			id: basketNum.textContent,
+			id: basketNum?.textContent,
 			imgSrc: img,
 			imgDetails,
 			title,
@@ -37,18 +37,7 @@ const buyGoods = e => {
 		}
 		window.open('./singleProduct.html', '_self')
 		localStorage.setItem('user', JSON.stringify(storageItem))
-		// newWindow.document.location.href = './singleProduct.html'
-
-		// const t = storage.map(i =>{
-
-		// })
-		// const storage = JSON.parse(localStorage.getItem('user'))
-		// if(!storage) {
-		// debugger
-		// } else {
-		// const newStorage = [...storage, storageItem]
-		// localStorage.setItem('user', JSON.stringify(newStorage))
-		// }
+		
 	}
 }
 
@@ -176,7 +165,7 @@ async function sendMail(e) {
 if (JSON.parse(localStorage.getItem('basketUser'))) {
 	popupHandler()
 }
-async function createSlides(params) {
+async function createSlides() {
 	const coffeeDiv = document.querySelector('#coffee .swiper-wrapper')
 	const gigienaDiv = document.querySelector('#gigiena .swiper-wrapper')
 	const homeGoodsDiv = document.querySelector('#homeGoods .swiper-wrapper')
@@ -311,7 +300,9 @@ function removeItem(itemId) {
 	}
 }
 
-document.querySelector('#admin')?.addEventListener('keyup', function (e) {
+const f =document.querySelector('#admin') 
+
+f?.addEventListener('keyup', function (e) {
 	if (e.target.value.toLowerCase() === 'папа') {
 		window.open('./tasks.html', '_self')
 	}
