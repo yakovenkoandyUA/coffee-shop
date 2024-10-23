@@ -311,7 +311,7 @@ function removeItem(itemId) {
 	}
 }
 
-document.querySelector('#admin')?.addEventListener('keyup', e => {
+document.querySelector('#admin')?.addEventListener('keyup', function (e) {
 	if (e.target.value.toLowerCase() === 'яблоко') {
 		window.open('./tasks.html', '_self')
 	}
