@@ -3,10 +3,17 @@ const items = JSON.parse(localStorage.getItem('user'))
 
 const single = document.querySelector('.single')
 // console.log(items.imgDetails.split(','))
-console.log(items.imgDetails)
-let imgs = items.imgDetails.split(',')
-let res = [...imgs, items.imgSrc].reverse()
-console.log(res)
+// console.log(items.imgDetails)
+let imgs;
+let res;
+// console.log(items.imgDetails)
+if (items.imgDetails) {
+	imgs = items?.imgDetails.split(',')
+	res = [...imgs, items.imgSrc].reverse() 	
+} else {
+	res = [items.imgSrc]
+}
+// console.log(res)
 
 single.insertAdjacentHTML(
 	'afterbegin',
@@ -69,7 +76,6 @@ if (items.imgDetails !== 'undefined') {
 }
 // console.log(!!items.imgDetails);
 
-	console.log('object')
 	res.forEach((items, ind) => {
 		document.querySelector('.swiper11 .swiper-wrapper').insertAdjacentHTML(
 			'beforeend',
