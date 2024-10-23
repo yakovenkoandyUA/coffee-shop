@@ -312,7 +312,7 @@ function removeItem(itemId) {
 }
 
 document.querySelector('#admin')?.addEventListener('keyup', function (e) {
-	if (e.target.value.toLowerCase() === 'яблоко') {
+	if (e.target.value.toLowerCase() === 'папа') {
 		window.open('./tasks.html', '_self')
 	}
 })
