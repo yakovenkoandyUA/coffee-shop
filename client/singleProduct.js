@@ -135,3 +135,12 @@ function reducedItems(ar, newItem) {
 		return [...ar, newItem]
 	}
 }
+
+
+
+function goBack() {
+	history.back()
+}
+
+const btnBack = document.querySelector('.go-back')
+btnBack.addEventListener('click', goBack)
