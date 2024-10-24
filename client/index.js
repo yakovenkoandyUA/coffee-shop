@@ -1,5 +1,5 @@
-if(localStorage.getItem('storage')) {
-	localStorage.setItem('storage', JSON.stringify([]))
+if (localStorage.getItem('storage') === 'undefined') {
+		localStorage.setItem('storage', JSON.stringify([]))
 }
 
 
