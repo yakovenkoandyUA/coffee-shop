@@ -1,3 +1,8 @@
+if(localStorage.getItem('storage')) {
+	localStorage.setItem('storage', JSON.stringify([]))
+}
+
+
 const modal = document.querySelector('.modal')
 const close = document.querySelector('.close')
 const btnWonna = document.querySelector('.btn__wonna')
@@ -37,7 +42,6 @@ const buyGoods = e => {
 		}
 		window.open('./singleProduct.html', '_self')
 		localStorage.setItem('user', JSON.stringify(storageItem))
-		
 	}
 }
 
@@ -58,10 +62,6 @@ const goods = document.querySelectorAll('.goods')
 goods.forEach(item => {
 	item.addEventListener('click', buyGoods)
 })
-// if(!localStorage.getItem('user')) {
-// 	localStorage.setItem('user', JSON.stringify([]))
-// }
-
 const basket = document.querySelector('.basket_wrap')
 const modalBasket = document.querySelector('.modal-basket')
 const modalWrapperBasket = document.querySelector('.modal-basket-wrapper')
@@ -257,16 +257,18 @@ if (localStorage.getItem('storage')) {
 
 document.querySelector('.modal-basket-goods').addEventListener('click', e => {
 	// e.target.parentElement.remove()
-	const newStore = removeItem(e.target.parentElement.dataset.id)
-	localStorage.setItem('storage', JSON.stringify(newStore))
-	// console.log(e.target.parentElement)
-	const wrapper = document.querySelector('.modal-basket-goods')
+	if (e.target.classList.contains('delete')) {
+		const newStore = removeItem(e.target.parentElement.dataset.id)
+		// console.log(newStore);
+		localStorage.setItem('storage', JSON.stringify(newStore))
+		// console.log(e.target.parentElement)
+		const wrapper = document.querySelector('.modal-basket-goods')
 
-	wrapper.innerHTML = ''
-	newStore?.forEach(singleGood => {
-		wrapper.insertAdjacentHTML(
-			'afterbegin',
-			`
+		wrapper.innerHTML = ''
+		newStore?.forEach(singleGood => {
+			wrapper.insertAdjacentHTML(
+				'afterbegin',
+				`
 			<div data-id='${singleGood.id}' class="modal-basket-goods-item">
 			<img src="${singleGood.imgSrc}" alt="">
 			<div class="count">
@@ -276,8 +278,9 @@ document.querySelector('.modal-basket-goods').addEventListener('click', e => {
 			</div>
 			<img src="./img/close.png" class="delete" alt="" />
 			</div>`,
-		)
-	})
+			)
+		})
+	}
 })
 
 function removeItem(itemId) {
@@ -294,13 +297,13 @@ function removeItem(itemId) {
 		if (item.qty === 0) {
 			storage.splice(itemIndex, 1)
 		}
-
+		console.log(storage)
 		// Display the updated array
 		return storage
 	}
 }
 
-const f =document.querySelector('#admin') 
+const f = document.querySelector('#admin')
 
 f?.addEventListener('keyup', function (e) {
 	if (e.target.value.toLowerCase() === 'папа') {

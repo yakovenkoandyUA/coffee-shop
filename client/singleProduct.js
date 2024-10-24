@@ -101,6 +101,7 @@ function buy() {
 	//     title,
 	// }
 	const basketNum = document.querySelector('.basket_num')
+	const basketImg = document.querySelector('.basket')
 	const storage = JSON.parse(localStorage.getItem('storage'))
 	if (!storage) {
 		localStorage.setItem('storage', JSON.stringify([items]))
@@ -109,6 +110,11 @@ function buy() {
 		localStorage.setItem('storage', JSON.stringify(res))
 	}
 	basketNum.textContent = JSON.parse(localStorage.getItem('storage')).length
+	basketImg.classList.add('anim')
+	setTimeout(() => {
+		basketImg.classList.remove('anim')
+		
+	}, 1500)
 }
 
 function reducedItems(ar, newItem) {

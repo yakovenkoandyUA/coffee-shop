@@ -804,10 +804,38 @@ h6 {
 	background-color: #fff;
 	border-radius: 50%;
 	padding: 5px;
+	
+}
+
+.basket.anim {
+	animation: buy 1.5s  ease-in-out ;
 }
 
 .basket_wrap {
 	position: relative;
+}
+
+@keyframes buy {
+	0%{
+		transform: rotate(0);
+		
+	}
+	30% {
+		transform: rotate(-35deg);
+	}
+	50% {
+		transform: rotate(35deg);	
+	}
+	70% {
+		transform: rotate(-15deg);
+	}
+	90% {
+		transform: rotate(15deg);
+	}
+	100% {
+		transform: rotate(0);
+
+	}
 }
 
 .basket_num {
@@ -1100,3 +1128,5 @@ h6 {
     .swiper10 .swiper-slide-thumb-active {
       opacity: 1;
     }
+
+
