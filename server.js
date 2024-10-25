@@ -78,6 +78,7 @@ const taskSchema = new mongoose.Schema({
 	mail: String,
 	name: String,
 	phone: String,
+	address: String,
 	storage: [{
 		id: String,
 		imgSrc: String,
@@ -107,7 +108,7 @@ async function getAllTasks(req, res) {
 // Route to add a new task (POST /tasks)
 async function addTasks(req, res) {
 	try {
-		const { lastName, mail, name, phone, storage, completed } = req.body // Extract data from request body
+		const { lastName, mail, name, phone, storage,address, completed } = req.body // Extract data from request body
 		// Create a new task
 		const newTask = new Task({
 			lastName,
@@ -116,6 +117,7 @@ async function addTasks(req, res) {
 			phone,
 			storage,
 			completed,
+			address,
 		})
 
 		// Save the task to the database

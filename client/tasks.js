@@ -22,12 +22,13 @@ async function req () {
                         </div>`
         })
 		wrapper.insertAdjacentHTML(
-			"beforeend",
+			'beforeend',
 			`
 			<div class="tasks-item">
                     <div class="tasks-item-num">${++ind}</div>
                     <div class="tasks-item-names">${singleGood.name} ${singleGood.lastName}</div>
                     <div class="tasks-item-phone">${singleGood.phone}</div>
+                    <div class="tasks-item-address">${singleGood.address}</div>
                     <div class="tasks-item-good">
                         ${storageList}
                     </div>
@@ -48,3 +49,5 @@ req()
 
 // const btnBack = document.querySelector('.go-back')
 // btnBack.addEventListener('click', goBack)
+
+

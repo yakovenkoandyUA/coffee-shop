@@ -28,8 +28,8 @@ const buyGoods = e => {
 		const img = e.target.parentElement.parentElement.children[0].src
 		const imgDetails = e.target.parentElement.parentElement.children[0].dataset.details
 		const title = e.target.parentElement.parentElement.children[1].textContent
-		const descr = e.target.parentElement.parentElement.children[2].textContent
-
+		const descr = e.target.parentElement.parentElement.children[2].innerHTML
+		// console.log(e.target.parentElement.parentElement.children)
 		basketNum.textContent = +basketNum.textContent + 1
 		// console.log(e.target.parentElement.parentElement.children)
 		const storageItem = {
@@ -126,10 +126,13 @@ async function sendMail(e) {
 	})
 	data.storage = JSON.parse(localStorage.getItem('storage'))
 	data.completed = false
-	// console.log(data);
+	console.log(data);
 	// const url = 'http://localhost:8080'
 	// console.log(JSON.stringify(data))
-
+	document.querySelector('.single').classList.add('hidden')
+	document.querySelector('#loader-page').classList.add('active')
+	
+	
 	const res = await fetch('/api/mail', {
 		method: 'POST',
 		headers: {
@@ -146,7 +149,7 @@ async function sendMail(e) {
 		body: JSON.stringify(data),
 	})
 	const result1 = await res1.text()
-
+	
 	// console.log(result1,result);
 	localStorage.setItem('basketUser', true)
 	localStorage.setItem('storage', JSON.stringify([]))
@@ -159,12 +162,15 @@ async function sendMail(e) {
 	})
 	const resTasks = await tasks.json()
 	// console.log(resTasks)
+	document.querySelector('#loader-page').classList.remove('active')
 	window.open('./index.html', '_self')
 }
 
 if (JSON.parse(localStorage.getItem('basketUser'))) {
 	popupHandler()
 }
+
+
 async function createSlides() {
 	const coffeeDiv = document.querySelector('#coffee .swiper-wrapper')
 	const gigienaDiv = document.querySelector('#gigiena .swiper-wrapper')
@@ -174,14 +180,17 @@ async function createSlides() {
 	const { coffee, gigiena, homeGoods } = await data.json()
 
 	coffee.forEach(({ imgSrc, title, description, price, imgDetails }) => {
+		// const testD = decodeEntities(description)
+		// console.log(testD);
 		coffeeDiv.insertAdjacentHTML(
 			'beforeend',
 			`
 			<div class="prodcut__list-item swiper-slide">
 				<img class="prodcut__list-img" src="${imgSrc}" alt=""data-details="${imgDetails}" />
-				<h3 class="prodcut__list-title" data-descr='${description}'>
+				<h3 class="prodcut__list-title" '>
 					${title}
 				</h3>
+				<p class="product-hiden-text">${description}</p>
 				<h3 class="prodcut__list-title1" >
 					${description}
 				</h3>
@@ -200,9 +209,10 @@ async function createSlides() {
 			`
 			<div class="prodcut__list-item swiper-slide">
 				<img class="prodcut__list-img" src="${imgSrc}" alt="" />
-				<h3 class="prodcut__list-title" data-descr='${description}'>
+				<h3 class="prodcut__list-title" '>
 					${title}
 				</h3>
+				<p class="product-hiden-text">${description}</p>
 				<h3 class="prodcut__list-title1" >
 					${description}
 				</h3>
@@ -221,9 +231,10 @@ async function createSlides() {
 			`
 			<div class="prodcut__list-item swiper-slide">
 				<img class="prodcut__list-img" src="${imgSrc}" alt=""  />
-				<h3 class="prodcut__list-title" data-descr='${description}'>
+				<h3 class="prodcut__list-title" '>
 					${title}
 				</h3>
+				<p class="product-hiden-text">${description}</p>
 				<h3 class="prodcut__list-title1" >
 					${description}
 				</h3>

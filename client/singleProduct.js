@@ -13,8 +13,15 @@ if (items.imgDetails) {
 } else {
 	res = [items.imgSrc]
 }
-// console.log(res)
+// console.log(items)
+function decodeEntities(encodedString) {
+	var textArea = document.createElement('textarea')
+	textArea.innerHTML = encodedString
+	return textArea.value
+}
 
+
+// console.log(decodeEntities(items.descr));
 single.insertAdjacentHTML(
 	'afterbegin',
 	`			<div>
@@ -43,7 +50,7 @@ single.insertAdjacentHTML(
 	</div>
 				<div class="single__info">
 					<h2 class="single__title">${items.title}</h2>
-					<p class="single__descr">${items.descr}</p>
+					<p class="single__descr">${decodeEntities(items.descr)}</p>
 				</div>`,
 )
 var swiper = new Swiper('.swiper10', {
