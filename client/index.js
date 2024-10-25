@@ -126,7 +126,7 @@ async function sendMail(e) {
 	})
 	data.storage = JSON.parse(localStorage.getItem('storage'))
 	data.completed = false
-	console.log(data);
+	// console.log(data);
 	// const url = 'http://localhost:8080'
 	// console.log(JSON.stringify(data))
 	document.querySelector('.single').classList.add('hidden')
