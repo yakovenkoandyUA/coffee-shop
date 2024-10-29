@@ -170,7 +170,7 @@
 		{
 			"id": 0,
 			"imgSrc": "./img/anim/anim.png",
-			"title": "електро-крутка",
+			"title": "електро-куртка",
 			"description": "Опис товару вже перекладається нашими фахівцями",
 			"price": "на замовлення",
 			"imgDetails": ["./img/anim/anim2.webp", "./img/anim/anim3.webp", "./img/anim/anim4.webp", "./img/anim/anim5.webp"]
