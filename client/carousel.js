@@ -72,6 +72,30 @@ const swiper2 = new Swiper('.swiper2', {
 		},
 	},
 })
+const swiper4 = new Swiper('.swiper4', {
+	// Optional parameters
+	// direction: 'vertical',
+	loop: true,
+
+	// If we need pagination
+	pagination: {
+		el: '.swiper-pagination4',
+	},
+	// Default parameters
+	slidesPerView: 1,
+	spaceBetween: 10,
+	// Responsive breakpoints
+	breakpoints: {
+		480: {
+			slidesPerView: 2,
+			spaceBetween: 30,
+		},
+		900: {
+			slidesPerView: 3,
+			spaceBetween: 20,
+		},
+	},
+})
 const swiper3 = new Swiper('.swiper3', {
 	// Optional parameters
 	// direction: 'vertical',
@@ -96,3 +120,4 @@ const swiper3 = new Swiper('.swiper3', {
 		},
 	},
 })
+

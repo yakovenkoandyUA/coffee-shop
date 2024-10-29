@@ -175,14 +175,39 @@ async function createSlides() {
 	const coffeeDiv = document.querySelector('#coffee .swiper-wrapper')
 	const gigienaDiv = document.querySelector('#gigiena .swiper-wrapper')
 	const homeGoodsDiv = document.querySelector('#homeGoods .swiper-wrapper')
-	if (!coffeeDiv || !gigienaDiv || !homeGoodsDiv) return
+	const thechDiv = document.querySelector('#thech .swiper-wrapper')
+	if (!coffeeDiv || !gigienaDiv || !homeGoodsDiv || !thechDiv) return
 	const data = await fetch('./data.json')
-	const { coffee, gigiena, homeGoods } = await data.json()
+	const { coffee, gigiena, homeGoods, thech } = await data.json()
 
 	coffee.forEach(({ imgSrc, title, description, price, imgDetails }) => {
 		// const testD = decodeEntities(description)
 		// console.log(testD);
 		coffeeDiv.insertAdjacentHTML(
+			'beforeend',
+			`
+			<div class="prodcut__list-item swiper-slide">
+				<img class="prodcut__list-img" src="${imgSrc}" alt=""data-details="${imgDetails}" />
+				<h3 class="prodcut__list-title" '>
+					${title}
+				</h3>
+				<p class="product-hiden-text">${description}</p>
+				<h3 class="prodcut__list-title1" >
+					${description}
+				</h3>
+				<div class="wrapper__price">
+					<p class="wrapper__price-text">${price}</p>
+					<button class="prodcut__list-link">
+						хочу
+					</button>
+				</div>
+			</div>`,
+		)
+	})
+	thech.forEach(({ imgSrc, title, description, price, imgDetails }) => {
+		// const testD = decodeEntities(description)
+		// console.log(testD);
+		thechDiv.insertAdjacentHTML(
 			'beforeend',
 			`
 			<div class="prodcut__list-item swiper-slide">

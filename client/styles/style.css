@@ -291,9 +291,11 @@ main {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	color: #fff;
-	font-size: 26px;
+	font-size: 22px;
 	font-weight: 400;
 	text-align: center;
+	height: 44px;
+	padding-inline: 16px;
 }
 .prodcut__list-title1 {
 	display: none;
@@ -314,6 +316,7 @@ main {
 }
 
 .prodcut__list-link {
+	cursor: pointer;
 	padding: 14px 28px;
 	text-transform: uppercase;
 	color: #2e2e2e;
@@ -684,7 +687,8 @@ h6 {
 
 .swiper1,
 .swiper2,
-.swiper3 {
+.swiper3,
+.swiper9 {
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
@@ -698,6 +702,7 @@ h6 {
 .swiper-pagination,
 .swiper-pagination1,
 .swiper-pagination2,
+.swiper-pagination9,
 .swiper-pagination3 {
 	text-align: center;
 	margin-top: 50px;
@@ -1214,7 +1219,6 @@ h6 {
 		transform: rotate(360deg);
 	}
 }
-
 
 .single {
 	transition: 0.7s;
