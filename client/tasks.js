@@ -14,7 +14,7 @@ async function req () {
 
     resTasks?.forEach((singleGood, ind) => {
         let storageList = ''
-        console.log(singleGood)
+        // console.log(singleGood.address)
         singleGood.storage.forEach(item => {
             storageList += `<div class="tasks-item-good-el">
                             <img src="${item.imgSrc}" alt="">

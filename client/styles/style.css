@@ -1094,20 +1094,25 @@ h6 {
 }
 
 .tasks-head > div {
-	border: 1px solid #272d6b;
+	border: 2px solid #272d6b;
 	padding: 10px;
 	text-align: center;
 }
 
 .tasks-item-good img {
 	object-fit: cover;
-	width: 200px;
+	width: 100px;
 }
 
 .tasks-item-good-el {
 	display: flex;
 	align-items: center;
 	column-gap: 20px;
+	justify-content: center;
+}
+
+.tasks-item > div:not(:last-child) {
+	border-right: 2px solid #202147;
 }
 
 .tasks-item-good {
@@ -1227,3 +1232,30 @@ h6 {
 	opacity: 0;
 	pointer-events: none;
 }
+
+
+.tabs-tasks  {
+	display: flex;
+	justify-content: center;
+	column-gap: 20px;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.tabs-tasks button {
+	padding: 12px 40px;
+	border-radius: 5px;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: .5px;
+	color: #dbf1e9;
+	background-color: #202147;
+	border: none;
+	outline: none;
+	font-weight: bold;
+	cursor: pointer;
+}
+.tabs-tasks button.active {
+	color: #2e2e2e;
+	background-color: #e13a4b;
+} 
