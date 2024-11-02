@@ -84,6 +84,21 @@ const Task = mongoose.model('Task', taskSchema)
 const tasksRoutes = express.Router()
 tasksRoutes.get('/', getAllTasks)
 tasksRoutes.post('/', addTasks)
+tasksRoutes.patch('/:id/toggle-completed', async (req, res) => {
+	try {
+		const { id } = req.params
+		// Find the task by ID and toggle the completed status
+		const task = await Task.findById(id)
+		if (!task) {
+			return res.status(404).json({ message: 'Task not found' })
+		}
+		task.completed = !task.completed
+		await task.save()
+		res.send('заказ оброблений')
+	} catch (error) {
+		res.status(500).json({ message: 'Server error', error })
+	}
+})
 async function getAllTasks(req, res) {
 	// res.send('hello')
 	try {

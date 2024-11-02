@@ -32,7 +32,7 @@ async function req () {
                     <div class="tasks-item-good">
                         ${storageList}
                     </div>
-                    <div><input type="checkbox"></div>
+                    <div> <input type="checkbox" class="toggle-completed-checkbox" data-task-id="${singleGood._id}" ${singleGood.completed ? 'checked' : ''}></div>
                 </div>`,
 		)
 	})
@@ -42,6 +42,39 @@ async function req () {
 
 req()
 
+const inputs = document.querySelectorAll('.toggle-completed-checkbox') 
+inputs.forEach(checkbox => {
+	checkbox.addEventListener('change', event => {
+		const taskId = event.target.getAttribute('data-task-id')
+		toggleTaskCompleted(taskId, event.target)
+	})
+})
+
+
+// Function to toggle the task's completed status
+async function toggleTaskCompleted(taskId, checkbox) {
+    try {
+        const response = await fetch(`/tasks/${taskId}/toggle-completed`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to toggle task completion');
+        }
+
+        const updatedTask = await response.json();
+        console.log('Task toggled successfully:', updatedTask);
+        // Update the checkbox's checked state based on the server response
+        checkbox.checked = updatedTask.completed;
+    } catch (error) {
+        console.error('Error toggling task completion:', error);
+        // Revert checkbox state if there's an error
+        checkbox.checked = !checkbox.checked;
+    }
+}
 
 // function goBack() {
 // 	history.back()
