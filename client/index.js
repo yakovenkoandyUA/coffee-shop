@@ -1,7 +1,6 @@
 if (localStorage.getItem('storage') === 'undefined') {
-		localStorage.setItem('storage', JSON.stringify([]))
+	localStorage.setItem('storage', JSON.stringify([]))
 }
-
 
 const modal = document.querySelector('.modal')
 const close = document.querySelector('.close')
@@ -18,8 +17,22 @@ const handleModal = e => {
 btnWonna?.addEventListener('click', handleModal)
 close?.addEventListener('click', handleModal)
 submit?.addEventListener('click', handleModal)
-submit?.addEventListener('submit', e => {
+submit?.addEventListener('submit', async e => {
 	e.preventDefault()
+	const allField = document.querySelectorAll('#wonnaForm input')
+	let data = {}
+	allField.forEach(i => {
+		data[i.name] = i.value
+	})
+	const res = await fetch('/api/mail', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
+	const result = await res.text()
+	console.log(result);
 })
 
 const buyGoods = e => {
@@ -131,16 +144,7 @@ async function sendMail(e) {
 	// console.log(JSON.stringify(data))
 	document.querySelector('.single').classList.add('hidden')
 	document.querySelector('#loader-page').classList.add('active')
-	
-	
-	const res = await fetch('/api/mail', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(data),
-	})
-	const result = await res.text()
+
 	const res1 = await fetch('/api/mail/admin', {
 		method: 'POST',
 		headers: {
@@ -149,7 +153,7 @@ async function sendMail(e) {
 		body: JSON.stringify(data),
 	})
 	const result1 = await res1.text()
-	
+
 	// console.log(result1,result);
 	localStorage.setItem('basketUser', true)
 	localStorage.setItem('storage', JSON.stringify([]))
@@ -169,7 +173,6 @@ async function sendMail(e) {
 if (JSON.parse(localStorage.getItem('basketUser'))) {
 	popupHandler()
 }
-
 
 async function createSlides() {
 	const coffeeDiv = document.querySelector('#coffee .swiper-wrapper')

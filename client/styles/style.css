@@ -702,6 +702,7 @@ h6 {
 .swiper-pagination,
 .swiper-pagination1,
 .swiper-pagination2,
+.swiper-pagination4,
 .swiper-pagination9,
 .swiper-pagination3 {
 	text-align: center;
@@ -776,6 +777,7 @@ h6 {
 
 .modal-form-submit,
 .modal-form-wonna-submit {
+	
 	text-transform: uppercase;
 	background-color: #e13a4b;
 	border-radius: 25px;
@@ -913,7 +915,7 @@ h6 {
 
 .modal-basket-wrapper {
 	overflow-y: scroll;
-	height: 80vh;
+	height: 70vh;
 }
 
 .modal-basket-goods-item {
