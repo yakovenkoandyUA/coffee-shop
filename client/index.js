@@ -130,6 +130,7 @@ submit1?.addEventListener('click', sendMail)
 async function sendMail(e) {
 	e.preventDefault()
 	const fields = document.querySelectorAll('.modal-form-field')
+	const area = document.querySelectorAll('.modal-form-textarea')
 	const allImg = [...document.querySelectorAll('.modal-basket-goods-item img')]
 	const data = {}
 	fields.forEach(({ name, value }) => {
@@ -137,6 +138,7 @@ async function sendMail(e) {
 			data[name] = value
 		}
 	})
+	data.desc = area.value
 	data.storage = JSON.parse(localStorage.getItem('storage'))
 	data.completed = false
 	// console.log(data);

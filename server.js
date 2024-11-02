@@ -62,11 +62,12 @@ mailRoutes.post('/', sendEmail)
 mailRoutes.post('/admin', sendEmail1)
 
 const taskSchema = new mongoose.Schema({
-	lastName: String,
-	mail: String,
+	// lastName: String,
+	// mail: String,
 	name: String,
 	phone: String,
-	address: String,
+	desc: String,
+	// address: String,
 	storage: [{
 		id: String,
 		imgSrc: String,

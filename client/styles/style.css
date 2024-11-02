@@ -818,7 +818,10 @@ h6 {
 }
 
 .basket_wrap {
-	position: relative;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 11111;
 }
 
 @keyframes buy {

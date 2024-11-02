@@ -25,9 +25,9 @@ async function req() {
 				`
 			<div class="tasks-item">
                     <div class="tasks-item-num">${++ind}</div>
-                    <div class="tasks-item-names">${singleGood.name} ${singleGood.lastName}</div>
+                    <div class="tasks-item-names">${singleGood.name}</div>
                     <div class="tasks-item-phone">${singleGood.phone}</div>
-                    <div class="tasks-item-address">${singleGood.address}</div>
+                    <div class="tasks-item-address">${singleGood.desc ? singleGood.desc : '-'}</div>
                     <div class="tasks-item-good">
                         ${storageList}
                     </div>
@@ -40,9 +40,9 @@ async function req() {
 				`
 			<div class="tasks-item">
                     <div class="tasks-item-num">${++ind}</div>
-                    <div class="tasks-item-names">${singleGood.name} ${singleGood.lastName}</div>
+                    <div class="tasks-item-names">${singleGood.name} </div>
                     <div class="tasks-item-phone">${singleGood.phone}</div>
-                    <div class="tasks-item-address">${singleGood.address}</div>
+                    <div class="tasks-item-address">${singleGood.desc ?  singleGood.desc : '-'}</div>
                     <div class="tasks-item-good">
                         ${storageList}
                     </div>
