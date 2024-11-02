@@ -7,8 +7,9 @@ const close = document.querySelector('.close')
 const btnWonna = document.querySelector('.btn__wonna')
 const submit = document.querySelector('.modal-form-wonna-submit')
 const submit1 = document.querySelector('.modal-form-submit')
-
+// console.log(submit);
 const handleModal = e => {
+	e.preventDefault()
 	if (e?.target === e?.currentTarget) {
 		modal.classList.toggle('active')
 	}
@@ -17,13 +18,17 @@ const handleModal = e => {
 btnWonna?.addEventListener('click', handleModal)
 close?.addEventListener('click', handleModal)
 submit?.addEventListener('click', handleModal)
-submit?.addEventListener('submit', async e => {
+submit?.addEventListener('click', async e => {
 	e.preventDefault()
 	const allField = document.querySelectorAll('#wonnaForm input')
-	let data = {}
+	const desc = document.querySelector('#wonnaForm textarea')
+	let data = {
+		desc: desc.value
+	}
 	allField.forEach(i => {
 		data[i.name] = i.value
 	})
+	
 	const res = await fetch('/api/mail', {
 		method: 'POST',
 		headers: {
