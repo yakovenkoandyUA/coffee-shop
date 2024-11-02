@@ -1256,8 +1256,17 @@ h6 {
 	outline: none;
 	font-weight: bold;
 	cursor: pointer;
+	transition: .4s;
 }
 .tabs-tasks button.active {
 	color: #2e2e2e;
 	background-color: #e13a4b;
 } 
+
+.task-wrapper {
+	display: none;
+}
+
+.task-wrapper.active {
+	display: block;
+}
