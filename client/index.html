@@ -664,8 +664,8 @@
 				<h2 class="section__subtitle black">Напиши нам, що ти хочеш</h2>
 				<form class="modal-form" id="wonnaForm">
 					<!-- <input class="modal-form-field" type="text" placeholder="Iмʼя" /> -->
-					<input class="modal-form-field" name="nameUser" id="admin" type="text" placeholder="Як до тебе звертатися" />
-					<input class="modal-form-field" name="phone" type="number" placeholder="Контактий номер телефону" />
+					<input class="modal-form-field" name="nameUser" id="admin" type="text" placeholder="Як до тебе звертатися" required/>
+					<input class="modal-form-field" name="phone" type="number" placeholder="Контактий номер телефону" required/>
 					<textarea class="modal-form-textarea" name="descr" placeholder="Опиши, що ти хочеш"></textarea>
 					<button class="modal-form-wonna-submit" type="submit">відправити</button>
 				</form>
@@ -679,11 +679,11 @@
 					<p>Товар не вибраний</p>
 				</div>
 				<form class="modal-form">
-					<input class="modal-form-field" name="name" type="text" placeholder="Як до тебе звертатися" />
+					<input class="modal-form-field" name="name" type="text" required placeholder="Як до тебе звертатися" />
 					<!-- <input class="modal-form-field" name="name" type="text" placeholder="Iмʼя" />
 					<input class="modal-form-field" name="lastName" type="text" placeholder="Прізвище" /> -->
 					<!-- <input class="modal-form-field" name="mail" type="email" required placeholder="exmaple@email.com" /> -->
-					<input class="modal-form-field" name="phone" type="number" placeholder="Контактий номер телефону" />
+					<input class="modal-form-field" name="phone" type="number" required placeholder="Контактий номер телефону" />
 					<!-- <input class="modal-form-field" name="address" type="text" placeholder="Номер відділення НП" /> -->
 					<textarea class="modal-form-textarea" name="desc" placeholder="Опиши, деталі замовлення"></textarea>
 					<input class="modal-form-submit" type="submit" value="замовити" />
