@@ -777,7 +777,6 @@ h6 {
 
 .modal-form-submit,
 .modal-form-wonna-submit {
-	
 	text-transform: uppercase;
 	background-color: #e13a4b;
 	border-radius: 25px;
@@ -1009,7 +1008,8 @@ h6 {
 	}
 }
 
-.popup {
+.popup,
+.popup1 {
 	background-color: rgba(0, 0, 0, 0.5);
 	position: fixed;
 	inset: 0;
@@ -1021,20 +1021,29 @@ h6 {
 	transition: 0.5s ease-in-out;
 }
 
-.popup.active {
+.popup.active,
+.popup1.active {
 	opacity: 1;
 	pointer-events: all;
 }
 
-.popup-wrapper {
+.popup-wrapper,
+.popup1-wrapper {
 	text-align: center;
 	background-color: #fff;
 	max-width: 300px;
 	border-radius: 10px;
 	padding: 20px 30px;
 }
+.popup1-wrapper {
+	max-width: 430px;
+}
+.popup1-wrapper p {
+	margin-bottom: 10px;
+}
 
-.popup button {
+.popup button,
+.popup1 button {
 	margin-top: 20px;
 	padding: 12px 30px;
 	background-color: #272d6b;
@@ -1202,9 +1211,11 @@ h6 {
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	color: #202147;
+	z-index: 1;
 }
 
 .loader-circle {
+	background-color: #e13a4b;
 	width: 180px;
 	height: 180px;
 	box-sizing: border-box;
@@ -1238,8 +1249,7 @@ h6 {
 	pointer-events: none;
 }
 
-
-.tabs-tasks  {
+.tabs-tasks {
 	display: flex;
 	justify-content: center;
 	column-gap: 20px;
@@ -1252,19 +1262,19 @@ h6 {
 	border-radius: 5px;
 	font-size: 14px;
 	text-transform: uppercase;
-	letter-spacing: .5px;
+	letter-spacing: 0.5px;
 	color: #dbf1e9;
 	background-color: #202147;
 	border: none;
 	outline: none;
 	font-weight: bold;
 	cursor: pointer;
-	transition: .4s;
+	transition: 0.4s;
 }
 .tabs-tasks button.active {
 	color: #2e2e2e;
 	background-color: #e13a4b;
-} 
+}
 
 .task-wrapper {
 	display: none;

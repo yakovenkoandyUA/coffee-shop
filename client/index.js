@@ -15,9 +15,22 @@ const handleModal = e => {
 	}
 }
 
+
+
 btnWonna?.addEventListener('click', handleModal)
 close?.addEventListener('click', handleModal)
 submit?.addEventListener('click', handleModal)
+
+const popup1 = document.querySelector('.popup1')
+const btnPopup1 = document.querySelector('.popup1 button')
+function popupHandler1(e = true) {
+	if (e?.target === popup1 || e?.target === btnPopup1 || e) {
+		popup1?.classList.toggle('active')
+		// console.log('object')
+	}
+}
+
+popup1?.addEventListener('click', popupHandler1)
 submit?.addEventListener('click', async e => {
 	e.preventDefault()
 	const allField = document.querySelectorAll('#wonnaForm input')
@@ -28,7 +41,7 @@ submit?.addEventListener('click', async e => {
 	allField.forEach(i => {
 		data[i.name] = i.value
 	})
-	
+	document.querySelector('#loader-page').classList.add('active')
 	const res = await fetch('/api/mail', {
 		method: 'POST',
 		headers: {
@@ -37,7 +50,9 @@ submit?.addEventListener('click', async e => {
 		body: JSON.stringify(data),
 	})
 	const result = await res.text()
+	document.querySelector('#loader-page').classList.remove('active')
 	console.log(result);
+	popup1.classList.add('active')
 })
 
 const buyGoods = e => {
