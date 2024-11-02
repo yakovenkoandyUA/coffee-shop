@@ -27,7 +27,7 @@ export const sendEmail = async (req, res) => {
 	const { nameUser, phone, desc } = req.body
 	// console.log(req.body);
 	const info = await transporter.sendMail({
-		to: 'yakovenkoandyua@gmail.com', // list of receivers
+		to: 'elitejapanimports1@gmail.com', // list of receivers
 		subject: `Замовлення хочу`, // Subject line
 		html: `Замовник - ${nameUser}, tel - ${phone}. Опис - ${desc}
 		`, // html body
