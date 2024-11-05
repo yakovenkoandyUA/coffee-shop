@@ -127,6 +127,7 @@ main {
 	text-align: center;
 	margin-bottom: 24px;
 	color: #fff;
+	margin-top: 10px;
 }
 .hero__icons {
 	width: 100vw;
@@ -285,11 +286,11 @@ main {
 }
 
 .prodcut__list-item img {
-	height: 420px;
+	height: 350px;
 }
 .prodcut__list-title {
-	margin-top: 20px;
-	margin-bottom: 20px;
+	/* margin-top: 20px;
+	margin-bottom: 20px; */
 	color: #fff;
 	font-size: 22px;
 	font-weight: 400;
@@ -304,7 +305,8 @@ main {
 	/* display: flex;
 	align-items: center;
 	flex-direction: column; */
-	padding: 1em 1em 2em;
+	padding-bottom: 1em;
+	padding-inline: 3em;
 	/* gap: 1.5em; */
 }
 
@@ -682,7 +684,9 @@ h6 {
 }
 .prodcut__list-img {
 	width: 100%;
-	border-radius: 10px;
+	/* object-fit: cover; */
+	padding: 10px;
+	/* border-radius: 10px; */
 }
 
 .swiper1,
@@ -911,7 +915,7 @@ h6 {
 }
 
 .facts__items-text {
-	height: 170px;
+	height: 70px;
 	line-height: 1.2;
 }
 

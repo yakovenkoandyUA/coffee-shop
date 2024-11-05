@@ -18,8 +18,8 @@ const swiper = new Swiper('.swiper', {
 			spaceBetween: 30,
 		},
 		// when window width is >= 640px
-		900: {
-			slidesPerView: 3,
+		1024: {
+			slidesPerView: 4,
 			spaceBetween: 20,
 		},
 	},
@@ -42,8 +42,8 @@ const swiper1 = new Swiper('.swiper1', {
 			slidesPerView: 2,
 			spaceBetween: 30,
 		},
-		900: {
-			slidesPerView: 3,
+		1024: {
+			slidesPerView: 4,
 			spaceBetween: 20,
 		},
 	},
@@ -66,8 +66,8 @@ const swiper2 = new Swiper('.swiper2', {
 			slidesPerView: 2,
 			spaceBetween: 30,
 		},
-		900: {
-			slidesPerView: 3,
+		1024: {
+			slidesPerView: 4,
 			spaceBetween: 20,
 		},
 	},
@@ -90,8 +90,8 @@ const swiper4 = new Swiper('.swiper4', {
 			slidesPerView: 2,
 			spaceBetween: 30,
 		},
-		900: {
-			slidesPerView: 3,
+		1024: {
+			slidesPerView: 4,
 			spaceBetween: 20,
 		},
 	},
@@ -114,8 +114,8 @@ const swiper3 = new Swiper('.swiper3', {
 			slidesPerView: 2,
 			spaceBetween: 30,
 		},
-		900: {
-			slidesPerView: 3,
+		1024: {
+			slidesPerView: 4,
 			spaceBetween: 20,
 		},
 	},
