@@ -24,12 +24,12 @@ app.use(cors())
 app.use(express.static('./client/'))
 
 export const sendEmail = async (req, res) => {
-	const { nameUser, phone, desc } = req.body
+	const { nameUser, phone, desc, mail} = req.body
 	// console.log(req.body);
 	const info = await transporter.sendMail({
 		to: 'elitejapanimports1@gmail.com', // list of receivers
 		subject: `Замовлення хочу`, // Subject line
-		html: `Замовник - ${nameUser}, tel - ${phone}. Опис - ${desc}
+		html: `Замовник - ${nameUser || 'Імʼя не вказано'}. номер телефону - ${phone || 'не вказаний'}.Пошта - ${mail}. Опис - ${desc}
 		`, // html body
 	})
 	

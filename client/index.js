@@ -15,11 +15,8 @@ const handleModal = e => {
 	}
 }
 
-
-
 btnWonna?.addEventListener('click', handleModal)
 close?.addEventListener('click', handleModal)
-submit?.addEventListener('click', handleModal)
 
 const popup1 = document.querySelector('.popup1')
 const btnPopup1 = document.querySelector('.popup1 button')
@@ -36,7 +33,7 @@ submit?.addEventListener('click', async e => {
 	const allField = document.querySelectorAll('#wonnaForm input')
 	const desc = document.querySelector('#wonnaForm textarea')
 	let data = {
-		desc: desc.value
+		desc: desc.value,
 	}
 	allField.forEach(i => {
 		data[i.name] = i.value
@@ -51,8 +48,9 @@ submit?.addEventListener('click', async e => {
 	})
 	const result = await res.text()
 	document.querySelector('#loader-page').classList.remove('active')
-	console.log(result);
+	// console.log(result);
 	popup1.classList.add('active')
+	handleModal(e)
 })
 
 const buyGoods = e => {
@@ -105,7 +103,9 @@ const handleModal1 = e => {
 	const wrapper = document.querySelector('.modal-basket-goods')
 	const wrapperP = document.querySelector('.modal-basket-goods p')
 	// wrapper.innerHTML = ''
-	wrapperP?.remove()
+	if (storage.length > 0) {
+		wrapperP?.remove()
+	}
 	storage?.forEach(singleGood => {
 		wrapper.insertAdjacentHTML(
 			'afterbegin',
@@ -126,7 +126,9 @@ const handleModal1 = e => {
 close1?.addEventListener('click', () => {
 	const wrapper = document.querySelector('.modal-basket-goods')
 	const c = [...wrapper.children]
-	c.forEach(i => i.remove())
+	if (JSON.parse(localStorage.getItem('storage')).length > 0) {
+		c.forEach(i => i.remove())
+	}
 	modalBasket.classList.toggle('active')
 })
 submit1?.addEventListener('click', () => {
@@ -141,7 +143,10 @@ modalBasket?.addEventListener('click', e => {
 		const wrapper = document.querySelector('.modal-basket-goods')
 		modalBasket.classList.toggle('active')
 		const c = [...wrapper.children]
-		c.forEach(i => i.remove())
+		if (JSON.parse(localStorage.getItem('storage')).length > 0) {
+			c.forEach(i => i.remove())
+
+		}
 	}
 })
 
@@ -305,8 +310,8 @@ const listCateg = document.querySelector('.category-list')
 const listCategItem = document.querySelectorAll('.category-list-item')
 
 listCategItem.forEach(item => {
-	item.addEventListener('click', () => {
-		handleModal()
+	item.addEventListener('click', e => {
+		modal.classList.toggle('active')
 	})
 })
 
