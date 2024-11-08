@@ -28,7 +28,9 @@ function popupHandler1(e = true) {
 }
 
 popup1?.addEventListener('click', popupHandler1)
-submit?.addEventListener('click', async e => {
+const form = document.querySelector('#wonnaForm')
+form?.addEventListener('submit', async e => {
+	// debugger
 	e.preventDefault()
 	const allField = document.querySelectorAll('#wonnaForm input')
 	const desc = document.querySelector('#wonnaForm textarea')
@@ -38,6 +40,8 @@ submit?.addEventListener('click', async e => {
 	allField.forEach(i => {
 		data[i.name] = i.value
 	})
+	modal.classList.toggle('active')
+
 	document.querySelector('#loader-page').classList.add('active')
 	const res = await fetch('/api/mail', {
 		method: 'POST',
@@ -50,7 +54,6 @@ submit?.addEventListener('click', async e => {
 	document.querySelector('#loader-page').classList.remove('active')
 	// console.log(result);
 	popup1.classList.add('active')
-	handleModal(e)
 })
 
 const buyGoods = e => {
@@ -131,12 +134,12 @@ close1?.addEventListener('click', () => {
 	}
 	modalBasket.classList.toggle('active')
 })
-submit1?.addEventListener('click', () => {
-	// const wrapper = document.querySelector('.modal-basket-goods')
-	// const c = [...wrapper.children]
-	// c.forEach(i => i.remove())
-	modalBasket.classList.toggle('active')
-})
+// submit1?.addEventListener('click', () => {
+// 	// const wrapper = document.querySelector('.modal-basket-goods')
+// 	// const c = [...wrapper.children]
+// 	// c.forEach(i => i.remove())
+// 	modalBasket.classList.toggle('active')
+// })
 basket?.addEventListener('click', handleModal1)
 modalBasket?.addEventListener('click', e => {
 	if (e.target === e.currentTarget) {
@@ -149,8 +152,8 @@ modalBasket?.addEventListener('click', e => {
 		}
 	}
 })
-
-submit1?.addEventListener('click', sendMail)
+const buyForm = document.getElementById('formBasket')
+buyForm?.addEventListener('submit', sendMail)
 
 async function sendMail(e) {
 	e.preventDefault()
@@ -169,6 +172,7 @@ async function sendMail(e) {
 	// console.log(data);
 	// const url = 'http://localhost:8080'
 	// console.log(JSON.stringify(data))
+	modalBasket.classList.toggle('active')
 	document.querySelector('.single').classList.add('hidden')
 	document.querySelector('#loader-page').classList.add('active')
 
