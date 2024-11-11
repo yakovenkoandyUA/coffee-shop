@@ -1287,3 +1287,13 @@ h6 {
 .task-wrapper.active {
 	display: block;
 }
+
+.imgSingle {
+	transition: transform 0.5s linear;
+	transform-origin: var(--x) var(--y);
+	    cursor: zoom-in;
+}
+
+.imgSingle:hover {
+	transform: scale(2);
+}

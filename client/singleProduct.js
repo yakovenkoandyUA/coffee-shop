@@ -4,12 +4,12 @@ const items = JSON.parse(localStorage.getItem('user'))
 const single = document.querySelector('.single')
 // console.log(items.imgDetails.split(','))
 // console.log(items.imgDetails)
-let imgs;
-let res;
+let imgs
+let res
 // console.log(items.imgDetails)
 if (items.imgDetails) {
 	imgs = items?.imgDetails.split(',')
-	res = [...imgs, items.imgSrc].reverse() 	
+	res = [...imgs, items.imgSrc].reverse()
 } else {
 	res = [items.imgSrc]
 }
@@ -19,7 +19,6 @@ function decodeEntities(encodedString) {
 	textArea.innerHTML = encodedString
 	return textArea.value
 }
-
 
 // console.log(decodeEntities(items.descr));
 single.insertAdjacentHTML(
@@ -83,17 +82,16 @@ if (items.imgDetails !== 'undefined') {
 }
 // console.log(!!items.imgDetails);
 
-	res.forEach((items, ind) => {
-		document.querySelector('.swiper11 .swiper-wrapper').insertAdjacentHTML(
-			'beforeend',
-			`
+res.forEach((items, ind) => {
+	document.querySelector('.swiper11 .swiper-wrapper').insertAdjacentHTML(
+		'beforeend',
+		`
 						<div class="swiper-slide">
-						<img src='${items}' alt='${ind}'></div>
+						<img class="imgSingle" src='${items}' alt='${ind}'></div>
 
 		`,
-		)
-	})
-
+	)
+})
 
 const btn = document.querySelector('.prodcut__list-link')
 btn.addEventListener('click', buy)
@@ -120,7 +118,6 @@ function buy() {
 	basketImg.classList.add('anim')
 	setTimeout(() => {
 		basketImg.classList.remove('anim')
-		
 	}, 1500)
 }
 
@@ -143,11 +140,33 @@ function reducedItems(ar, newItem) {
 	}
 }
 
-
-
 function goBack() {
 	history.back()
 }
 
 const btnBack = document.querySelector('.go-back')
 btnBack.addEventListener('click', goBack)
+
+const imgsSingl = document.querySelectorAll('.imgSingle')
+console.log(imgsSingl);
+
+let x, y, width, height;
+
+imgsSingl.forEach(elem => {
+	elem.addEventListener('mouseenter', () => {
+		const size = elem.getBoundingClientRect()
+		x = size.x
+		y = size.y
+		width = size.width
+		height = size.height
+	})
+
+	elem.addEventListener('mousemove', e => {
+		console.log('object')
+		const hor = ((e.clientX - x) / width) * 100
+		const ver = ((e.clientY - y) / height) * 100
+
+		elem.style.setProperty('--x', hor + '%')
+		elem.style.setProperty('--y', ver + '%')
+	})
+})
