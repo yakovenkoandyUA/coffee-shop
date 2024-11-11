@@ -148,25 +148,29 @@ const btnBack = document.querySelector('.go-back')
 btnBack.addEventListener('click', goBack)
 
 const imgsSingl = document.querySelectorAll('.imgSingle')
-console.log(imgsSingl);
+// console.log(imgsSingl)
 
-let x, y, width, height;
+let x, y, width, height
+window.addEventListener('DOMContentLoaded', e => {
+	let w = window.innerWidth
+	if (w > 900) {
+		imgsSingl.forEach(elem => {
+			elem.addEventListener('mouseenter', () => {
+				const size = elem.getBoundingClientRect()
+				x = size.x
+				y = size.y
+				width = size.width
+				height = size.height
+			})
 
-imgsSingl.forEach(elem => {
-	elem.addEventListener('mouseenter', () => {
-		const size = elem.getBoundingClientRect()
-		x = size.x
-		y = size.y
-		width = size.width
-		height = size.height
-	})
+			elem.addEventListener('mousemove', e => {
+				console.log('object')
+				const hor = ((e.clientX - x) / width) * 100
+				const ver = ((e.clientY - y) / height) * 100
 
-	elem.addEventListener('mousemove', e => {
-		console.log('object')
-		const hor = ((e.clientX - x) / width) * 100
-		const ver = ((e.clientY - y) / height) * 100
-
-		elem.style.setProperty('--x', hor + '%')
-		elem.style.setProperty('--y', ver + '%')
-	})
+				elem.style.setProperty('--x', hor + '%')
+				elem.style.setProperty('--y', ver + '%')
+			})
+		})
+	}
 })

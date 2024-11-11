@@ -356,6 +356,7 @@ document.querySelector('.modal-basket-goods').addEventListener('click', e => {
 function removeItem(itemId) {
 	let storage = JSON.parse(localStorage.getItem('storage'))
 	// Find the index of the item with the given id
+	const basketNum = document.querySelector('.basket_num')
 	const itemIndex = storage.findIndex(item => item.id === itemId)
 	if (itemIndex !== -1) {
 		const item = storage[itemIndex]
@@ -367,7 +368,8 @@ function removeItem(itemId) {
 		if (item.qty === 0) {
 			storage.splice(itemIndex, 1)
 		}
-		console.log(storage)
+		basketNum.textContent = storage.length
+		// console.log(storage)
 		// Display the updated array
 		return storage
 	}
