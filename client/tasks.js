@@ -9,7 +9,7 @@ async function req() {
 
 	const wrapper = document.querySelector('#done')
 	const wrapperNot = document.querySelector('#notDone')
-
+	resTasks?.reverse()
 	resTasks?.forEach((singleGood, ind) => {
 		let storageList = ''
 		// console.log(singleGood.address)
