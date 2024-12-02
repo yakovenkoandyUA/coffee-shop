@@ -66,6 +66,7 @@ const taskSchema = new mongoose.Schema({
 	// lastName: String,
 	mail: String,
 	name: String,
+	date: String,
 	phone: String,
 	desc: String,
 	// address: String,

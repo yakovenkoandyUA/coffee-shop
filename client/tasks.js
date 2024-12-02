@@ -25,6 +25,7 @@ async function req() {
 				`
 			<div class="tasks-item">
                     <div class="tasks-item-num">${++ind}</div>
+                    <div class="tasks-item-date">${singleGood.date || '-'}</div>
                     <div class="tasks-item-names">${singleGood.name || '-'}</div>
                     <div class="tasks-item-phone">${singleGood.phone || '-'}</div>
                     <div class="tasks-item-mail">${singleGood.mail || '-'}</div>
@@ -41,17 +42,18 @@ async function req() {
 				`
 			<div class="tasks-item">
                     <div class="tasks-item-num">${++ind}</div>
+					    <div class="tasks-item-date">${singleGood.date || '-'}</div>
                     <div class="tasks-item-names">${singleGood.name} </div>
                     <div class="tasks-item-phone">${singleGood.phone}</div>
-                    <div class="tasks-item-address">${singleGood.desc ?  singleGood.desc : '-'}</div>
+					    <div class="tasks-item-mail">${singleGood.mail || '-'}</div>
+                    <div class="tasks-item-address">${singleGood.desc ? singleGood.desc : '-'}</div>
                     <div class="tasks-item-good">
                         ${storageList}
                     </div>
                     <div> <input type="checkbox" class="toggle-completed-checkbox" data-task-id="${singleGood._id}" ${singleGood.completed ? 'checked' : ''}></div>
                 </div>`,
 			)
-            
-        }
+		}
 	})
 
 	// console.log(resTasks);
@@ -104,10 +106,10 @@ btnsTabs.forEach(item => {
 	item.addEventListener('click', e => {
 		const attr = e.currentTarget.dataset.id
 		const allDiv = document.querySelectorAll('.task-wrapper')
-        const b = document.querySelector('.tabs-tasks-btn.active')
-        b?.classList.remove('active')
+		const b = document.querySelector('.tabs-tasks-btn.active')
+		b?.classList.remove('active')
 
-       item.classList.add('active')
+		item.classList.add('active')
 		allDiv.forEach(i => {
 			if (i.id === attr) {
 				// console.log('object')
@@ -117,4 +119,33 @@ btnsTabs.forEach(item => {
 			}
 		})
 	})
+})
+
+document.querySelector('.task-wrapper.active').addEventListener('click', e => {
+	if (e.target.tagName === 'IMG') {
+		const wrapper = document.querySelector('.modal-wrapper')
+		const modal = document.querySelector('.modal')
+
+		const img = document.createElement('img')
+		img.src = e.target.src
+		img.classList.add('temp')
+
+		wrapper.append(img)
+
+		modal.classList.add('active')
+	}
+})
+
+const modal = document.querySelector('.modal')
+const close = document.querySelector('.close')
+
+modal.addEventListener('click', e => {
+	if (e.target.classList.contains('modal')) {
+		modal.classList.remove('active')
+		document.querySelector('.temp').remove()
+	}
+})
+close.addEventListener('click', e => {
+	modal.classList.remove('active')
+	document.querySelector('.temp').remove()
 })

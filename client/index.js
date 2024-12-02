@@ -56,6 +56,8 @@ form?.addEventListener('submit', async e => {
 	popup1.classList.add('active')
 })
 
+
+
 const buyGoods = e => {
 	const basketNum = document.querySelector('.basket_num')
 	if (e.target.classList.contains('prodcut__list-link')) {
@@ -66,10 +68,17 @@ const buyGoods = e => {
 		// console.log(e.target.parentElement.parentElement.children)
 		basketNum.textContent = +basketNum.textContent + 1
 		// console.log(e.target.parentElement.parentElement.children)
+		// Get the current date and time
+		const now = new Date()
+
+		// Extract the components
+		const date = now.toLocaleDateString() // Current date in the format MM/DD/YYYY
+
 		const storageItem = {
 			id: basketNum?.textContent,
 			imgSrc: img,
 			imgDetails,
+			date,
 			title,
 			descr,
 			qty: 1,
